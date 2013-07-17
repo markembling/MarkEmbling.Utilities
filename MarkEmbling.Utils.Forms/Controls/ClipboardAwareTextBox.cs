@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace MarkEmbling.Utils.Forms.Controls
@@ -19,9 +14,9 @@ namespace MarkEmbling.Utils.Forms.Controls
     /// clipboard-centric events.
     /// </summary>
     public class ClipboardAwareTextBox : TextBox {
-        private const int WM_CUT = 0x0300;
-        private const int WM_COPY = 0x0301;
-        private const int WM_PASTE = 0x0302;
+        private const int WmCut = 0x0300;
+        private const int WmCopy = 0x0301;
+        private const int WmPaste = 0x0302;
 
         public delegate void ClipboardEventHandler(object sender, ClipboardEventArgs e);
 
@@ -36,21 +31,21 @@ namespace MarkEmbling.Utils.Forms.Controls
 
         protected override void WndProc(ref Message m) {
             switch (m.Msg) {
-                case WM_CUT:
+                case WmCut:
                     if (CutText != null) {
                         var args = new ClipboardEventArgs(SelectedText);
                         CutText(this, args);
                         if (! args.Cancel) base.WndProc(ref m);
                     }
                     break;
-                case WM_COPY:
+                case WmCopy:
                     if (CopiedText != null) {
                         var args = new ClipboardEventArgs(SelectedText);
                         CopiedText(this, args);
                         if (! args.Cancel) base.WndProc(ref m);
                     }
                     break;
-                case WM_PASTE:
+                case WmPaste:
                     if (PastedText != null) {
                         var args = new ClipboardEventArgs(Clipboard.GetText());
                         PastedText(this, args);
