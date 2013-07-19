@@ -1,7 +1,7 @@
 MarkEmbling.Utils
 =================
 
-Various miscellaneous bits and pieces for re-use (.NET).
+Various miscellaneous bits and pieces for re-use (.NET). This will most likely grow over time.
 
 ### MarkEmbling.Utils
 
