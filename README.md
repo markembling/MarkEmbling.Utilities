@@ -5,7 +5,7 @@ Various miscellaneous bits and pieces for re-use (.NET). This will most likely g
 
 ### MarkEmbling.Utils
 
-Extension methods to make life easier
+Various extension methods and other commonly used reusable bits.
 
 ### MarkEmbling.Utils.Forms
 
