@@ -6,3 +6,4 @@ TestResult.xml
 _ReSharper*
 *.user
 thumbs.db
+build/nuget/*.nupkg
