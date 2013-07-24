@@ -6,6 +6,30 @@ namespace MarkEmbling.Utils.Tests.Extensions {
     [TestFixture]
     public class StringExtensionsTests {
         [Test]
+        public void Different_case_strings_are_equal() {
+            const string upperVersion = "MARKEMBLING.INFO";
+            const string lowerVersion = "markembling.info";
+
+            Assert.IsTrue(upperVersion.EqualsWithoutCase(lowerVersion));
+        }
+
+        [Test]
+        public void Non_matching_strings_are_not_equal() {
+            const string foo = "Foo";
+            const string bar = "Bar";
+
+            Assert.IsFalse(foo.EqualsWithoutCase(bar));
+        }
+
+        [Test]
+        public void Null_and_a_string_instance_are_not_equal() {
+            const string foo = "Foo";
+            const string bar = null;
+
+            Assert.IsFalse(foo.EqualsWithoutCase(bar));
+        }
+
+        [Test]
          public void First_returns_first_5_characters() {
             const string testString = "1234567890";
             var result = testString.First(5);

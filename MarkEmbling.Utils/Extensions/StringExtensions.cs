@@ -1,5 +1,16 @@
-﻿namespace MarkEmbling.Utils.Extensions {
+﻿using System;
+
+namespace MarkEmbling.Utils.Extensions {
     public static class StringExtensions {
+        /// <summary>
+        /// Determine if this string is equal to another, ignoring casing.
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="value">The string to compare to this instance</param>
+        public static bool EqualsWithoutCase(this string str, string value) {
+            return str.Equals(value, StringComparison.OrdinalIgnoreCase);
+        }
+
         /// <summary>
         /// Returns the first N characters from the string.
         /// </summary>
