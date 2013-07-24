@@ -70,5 +70,89 @@ namespace MarkEmbling.Utils.Tests.Extensions {
             Assert.Throws<ArgumentOutOfRangeException>(
                 () => testString.Last(8));
         }
+
+        [Test]
+        public void Truncate_shortens_a_long_string_to_target_length() {
+            const string testString = "One two three four five.";
+            var result = testString.Truncate(10);
+            Assert.AreEqual(10, result.Length);
+        }
+
+        [Test]
+        public void Truncate_returns_same_string_if_target_is_longer_than_string() {
+            const string testString = "One two.";
+            var result = testString.Truncate(10);
+            Assert.AreEqual("One two.", result);
+        }
+
+        [Test]
+        public void Truncate_can_append_suffix_if_provided_and_stay_within_character_limit() {
+            const string testString = "One two three four five.";
+            var result = testString.Truncate(10, "...");
+
+            Assert.AreEqual(10, result.Length);
+            Assert.AreEqual("One two...", result);
+        }
+
+        [Test]
+        public void Truncate_ignores_suffix_if_suffix_is_longer_than_limit() {
+            const string testString = "One two three four five.";
+            var result = testString.Truncate(6, "XXXXXXXXXX");
+
+            Assert.AreEqual(6, result.Length);
+            Assert.AreEqual("One tw", result);
+        }
+
+        [Test]
+        public void Truncate_ignores_suffix_if_suffix_is_same_length_as_limit() {
+            const string testString = "One two three four five.";
+            var result = testString.Truncate(6, "XXXXXX");
+
+            Assert.AreEqual(6, result.Length);
+            Assert.AreEqual("One tw", result);
+        }
+
+        [Test]
+        public void TruncateOnSpace_truncates_on_last_space_before_limit() {
+            const string testString = "One two three four five.";
+            var result = testString.TruncateOnWhitespace(12);
+            Assert.AreEqual(7, result.Length);
+        }
+
+        [Test]
+        public void TruncateOnWhitespace_cuts_off_word_if_no_whitespace_found() {
+            const string testString = "Onetwothreefourfive.";
+            var result = testString.TruncateOnWhitespace(8);
+
+            Assert.AreEqual(8, result.Length);
+            Assert.AreEqual("Onetwoth", result);
+        }
+
+        [Test]
+        public void TruncateOnWhitespace_can_append_suffix_if_provided_and_stay_within_character_limit() {
+            const string testString = "One two three four five.";
+            var result = testString.TruncateOnWhitespace(12, "...");
+
+            Assert.AreEqual(10, result.Length);
+            Assert.AreEqual("One two...", result);
+        }
+
+        [Test]
+        public void TruncateOnWhitespace_ignores_suffix_if_suffix_is_longer_than_limit() {
+            const string testString = "One two three four five.";
+            var result = testString.TruncateOnWhitespace(6, "XXXXXXXXXX");
+
+            Assert.AreEqual(3, result.Length);
+            Assert.AreEqual("One", result);
+        }
+
+        [Test]
+        public void TruncateOnWhitespace_ignores_suffix_if_suffix_is_same_length_as_limit() {
+            const string testString = "One two three four five.";
+            var result = testString.TruncateOnWhitespace(6, "XXXXXX");
+
+            Assert.AreEqual(3, result.Length);
+            Assert.AreEqual("One", result);
+        }
     }
 }

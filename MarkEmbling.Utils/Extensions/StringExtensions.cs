@@ -44,5 +44,59 @@ namespace MarkEmbling.Utils.Extensions {
         public static string Last(this string str) {
             return str.Last(1);
         }
+
+        /// <summary>
+        /// Truncate a string to the given number of characters.
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="characters">Target number of characters</param>
+        public static string Truncate(this string str, int characters) {
+            return str.Length > characters ? str.Substring(0, characters) : str;
+        }
+
+        /// <summary>
+        /// Truncate a string to the given number of characters, applying the given suffix.
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="characters">Target number of characters</param>
+        /// <param name="suffix">Suffix to append to the end of the truncated string</param>
+        public static string Truncate(this string str, int characters, string suffix) {
+            if (str.Length > suffix.Length && suffix.Length < characters)
+                return Truncate(str, characters - suffix.Length) + suffix;
+            return Truncate(str, characters);
+        }
+
+        /// <summary>
+        /// Truncate a string on the last occurance of whitespace within the given
+        /// character limit.
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="maxLength">Maximum number of characters</param>
+        public static string TruncateOnWhitespace(this string str, int maxLength) {
+            var whitespace = new[]{' ', '\r', '\n', '\t'};
+
+            var truncatedOnLimit = Truncate(str, maxLength);
+            var indexOfLastSpace = truncatedOnLimit.LastIndexOfAny(whitespace);
+
+            return indexOfLastSpace == -1 ? 
+                truncatedOnLimit : 
+                Truncate(truncatedOnLimit, indexOfLastSpace);
+        }
+
+        /// <summary>
+        /// Truncate a string on the last occurance of whitespace within the given
+        /// character limit, applying the given suffix.
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="maxLength">Maximum number of characters</param>
+        /// <param name="suffix">Suffix to append to the end of the truncated string</param>
+        public static string TruncateOnWhitespace(this string str, int maxLength, string suffix) {
+            if (str.Length > suffix.Length && suffix.Length < maxLength) {
+                var truncatedLeavingRoomForSuffix = TruncateOnWhitespace(str, maxLength - suffix.Length);
+                return truncatedLeavingRoomForSuffix + suffix;
+            }
+
+            return TruncateOnWhitespace(str, maxLength);
+        }
     }
 }
