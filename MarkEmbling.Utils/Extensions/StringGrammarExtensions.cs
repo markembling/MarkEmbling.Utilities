@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using MarkEmbling.Utils.Extensions.Grammar.Rules;
+using MarkEmbling.Utils.Grammar;
+using MarkEmbling.Utils.Grammar.Rules;
 
-namespace MarkEmbling.Utils.Extensions.Grammar {
+namespace MarkEmbling.Utils.Extensions {
     public static class StringGrammarExtensions {
         /// <summary>
         /// Return either the single form (the current string) or the given plural form,

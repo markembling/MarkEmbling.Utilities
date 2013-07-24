@@ -1,4 +1,6 @@
-namespace MarkEmbling.Utils.Extensions.Grammar.Rules {
+using MarkEmbling.Utils.Extensions;
+
+namespace MarkEmbling.Utils.Grammar.Rules {
     /// <summary>
     /// Apply an apostrophe and the letter S (lower case) to strings
     /// not ending in S

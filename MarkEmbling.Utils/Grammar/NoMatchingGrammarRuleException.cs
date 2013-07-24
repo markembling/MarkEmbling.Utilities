@@ -1,5 +1,5 @@
 using System;
 
-namespace MarkEmbling.Utils.Extensions.Grammar {
+namespace MarkEmbling.Utils.Grammar {
     public class NoMatchingGrammarRuleException : Exception {}
 }

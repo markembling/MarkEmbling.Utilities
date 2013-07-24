@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace MarkEmbling.Utils.Extensions.Grammar.Rules {
+namespace MarkEmbling.Utils.Grammar.Rules {
     /// <summary>
     /// Default rule sets for various operations (English language)
     /// </summary>
@@ -13,5 +13,12 @@ namespace MarkEmbling.Utils.Extensions.Grammar.Rules {
             new AddApostrophePossessiveRule(),
             new AddApostropheSPossessiveRule()
         };
+
+        /// <summary>
+        /// Rule set for converting a singular word to a plural form.
+        /// </summary>
+        public static IEnumerable<IGrammarTransformRule> Plural = new List<IGrammarTransformRule> {
+            
+        }; 
     }
 }

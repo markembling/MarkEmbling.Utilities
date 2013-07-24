@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using MarkEmbling.Utils.Extensions;
 using MarkEmbling.Utils.Extensions.Grammar;
-using MarkEmbling.Utils.Extensions.Grammar.Rules;
+using MarkEmbling.Utils.Grammar;
+using MarkEmbling.Utils.Grammar.Rules;
 using NUnit.Framework;
 
 namespace MarkEmbling.Utils.Tests.Extensions {

@@ -41,15 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Extensions\Grammar\Rules\AddApostrophePossessiveRule.cs" />
-    <Compile Include="Extensions\Grammar\Rules\AddApostropheSPossessiveRule.cs" />
-    <Compile Include="Extensions\Grammar\Rules\DefaultExceptionalCasePossessiveRule.cs" />
-    <Compile Include="Extensions\Grammar\Rules\DefaultRuleSets.cs" />
-    <Compile Include="Extensions\Grammar\GrammarTransformer.cs" />
-    <Compile Include="Extensions\Grammar\Rules\IGrammarTransformRule.cs" />
-    <Compile Include="Extensions\Grammar\NoMatchingGrammarRuleException.cs" />
+    <Compile Include="Grammar\Rules\AddApostrophePossessiveRule.cs" />
+    <Compile Include="Grammar\Rules\AddApostropheSPossessiveRule.cs" />
+    <Compile Include="Grammar\Rules\DefaultExceptionalCasePossessiveRule.cs" />
+    <Compile Include="Grammar\Rules\DefaultRuleSets.cs" />
+    <Compile Include="Grammar\GrammarTransformer.cs" />
+    <Compile Include="Grammar\Rules\IGrammarTransformRule.cs" />
+    <Compile Include="Grammar\NoMatchingGrammarRuleException.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\Grammar\StringGrammarExtensions.cs" />
+    <Compile Include="Extensions\StringGrammarExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
