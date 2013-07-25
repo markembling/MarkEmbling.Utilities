@@ -42,7 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\DecimalExtensionsTests.cs" />
+    <Compile Include="Extensions\DoubleExtensionsTests.cs" />
     <Compile Include="Extensions\EnumExtensionsTests.cs" />
+    <Compile Include="Extensions\FloatExtensionsTests.cs" />
     <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Grammar\GrammarTransformerTests.cs" />
     <Compile Include="Grammar\StringGrammarExtensionsTests.cs" />
