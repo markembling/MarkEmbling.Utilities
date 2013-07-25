@@ -44,7 +44,9 @@
   <ItemGroup>
     <Compile Include="Extensions\EnumExtensionsTests.cs" />
     <Compile Include="Extensions\StringExtensionsTests.cs" />
+    <Compile Include="Grammar\GrammarTransformerTests.cs" />
     <Compile Include="Grammar\StringGrammarExtensionsTests.cs" />
+    <Compile Include="Grammar\TestRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

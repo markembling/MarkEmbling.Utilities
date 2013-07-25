@@ -55,18 +55,5 @@ namespace MarkEmbling.Utils.Tests.Grammar {
             var result = singular.ToPossessive();
             Assert.AreEqual("John's", result);
         }
-
-        /// <summary>
-        /// Test rule
-        /// </summary>
-        class TestRule : IGrammarTransformRule {
-            public bool CanTransform(string input) {
-                return true;
-            }
-
-            public string Transform(string input) {
-                return "bar";
-            }
-        }
     }
 }
