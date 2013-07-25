@@ -19,12 +19,10 @@ namespace MarkEmbling.Utils.Extensions {
         /// </summary>
         /// <param name="str">Current string instance</param>
         /// <param name="count">Number to apply pluralisation rules against</param>
-        public static string Pluralise(this string str, int count) {
+        public static string ToPlural(this string str, int count) {
             return count == 1 ?
                 str :
                 PerformGrammarTransformation(str, DefaultRuleSets.Plural);
-
-            //return Pluralise(str, count, str + "s");
         }
 
         /// <summary>
@@ -34,7 +32,7 @@ namespace MarkEmbling.Utils.Extensions {
         /// <param name="str">Current string instance</param>
         /// <param name="count">Number to apply pluralisation rules against</param>
         /// <param name="multipleForm">Alternate plural form of the word</param>
-        public static string Pluralise(this string str, int count, string multipleForm) {
+        public static string ToPlural(this string str, int count, string multipleForm) {
             return count == 1 ? str : multipleForm;
         }
 
@@ -42,7 +40,7 @@ namespace MarkEmbling.Utils.Extensions {
         /// Apply default (naive English) possession rules
         /// </summary>
         /// <param name="str">Current string instance</param>
-        public static string Possessive(this string str) {
+        public static string ToPossessive(this string str) {
             return PerformGrammarTransformation(str, DefaultRuleSets.Possessive);
         }
     }

@@ -41,9 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\EnumExtensions.cs" />
-    <Compile Include="Grammar\Rules\AddApostrophePossessiveRule.cs" />
-    <Compile Include="Grammar\Rules\AddApostropheSPossessiveRule.cs" />
-    <Compile Include="Grammar\Rules\DefaultExceptionalCasePossessiveRule.cs" />
+    <Compile Include="Grammar\Rules\PluralBasicExceptionalCasesRule.cs" />
+    <Compile Include="Grammar\Rules\PluralEsRule.cs" />
+    <Compile Include="Grammar\Rules\PluralIaRule.cs" />
+    <Compile Include="Grammar\Rules\PluralIRule.cs" />
+    <Compile Include="Grammar\Rules\PluralSRule.cs" />
+    <Compile Include="Grammar\Rules\PossessiveApostropheRule.cs" />
+    <Compile Include="Grammar\Rules\PossessiveApostropheSRule.cs" />
+    <Compile Include="Grammar\Rules\PossessiveBasicExceptionalCasesRule.cs" />
     <Compile Include="Grammar\Rules\DefaultRuleSets.cs" />
     <Compile Include="Grammar\GrammarTransformer.cs" />
     <Compile Include="Grammar\Rules\IGrammarTransformRule.cs" />
