@@ -98,7 +98,6 @@ namespace MarkEmbling.Utils.Forms.Controls {
         }
 
         private void DragDropTreeView_DragOver(object sender, DragEventArgs e) {
-
             var clientPos = PointToClient(Cursor.Position);
 
             // Scroll the tree up/down if necessary
