@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -19,7 +20,15 @@ namespace MarkEmbling.Utils.Forms.Controls {
         private const int MapSize = 128;
         private string _nodeMap = "";
         private StringBuilder _newNodeMap = new StringBuilder(MapSize);
+        private readonly Timer _autoScrollTimer = new Timer();
         private bool _placeholdersVisible;
+
+        private const int WmVscroll = 0x115;
+        private const int SbLineDown = 1;
+        private const int SbLineUp = 0;
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern int SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, IntPtr lParam);
 
         enum PlaceholderLocation {
             LeafTop,
@@ -51,7 +60,30 @@ namespace MarkEmbling.Utils.Forms.Controls {
             DragEnter += DragDropTreeView_DragEnter;
             DragOver += DragDropTreeView_DragOver;
             DragDrop += DragDropTreeView_DragDrop;
+
+            // Set defaults
+            AutoScrollEnabled = true;
+            AutoScrollInterval = 150;
+            AutoScrollThreshold = 12;
         }
+
+        [Category("Behavior"),
+         Description("Whether the control should auto-scroll up/down when dragging items near the edge"),
+         DefaultValue(true)]
+        public bool AutoScrollEnabled { get; set; }
+
+        [Category("Behavior"),
+         Description("Interval between auto-scroll triggering"),
+         DefaultValue(150)]
+        public int AutoScrollInterval {
+            get { return _autoScrollTimer.Interval; }
+            set { _autoScrollTimer.Interval = value; }
+        }
+
+        [Category("Behavior"),
+         Description("Distance to the top/bottom which the cursor must be within to trigger auto-scrolling"),
+         DefaultValue(12)]
+        public int AutoScrollThreshold { get; set; }
 
         private void DragDropTreeView_MouseDown(object sender, MouseEventArgs e) {
             SelectedNode = GetNodeAt(e.X, e.Y);
@@ -66,7 +98,14 @@ namespace MarkEmbling.Utils.Forms.Controls {
         }
 
         private void DragDropTreeView_DragOver(object sender, DragEventArgs e) {
-            var nodeOver = GetNodeAt(PointToClient(Cursor.Position));
+
+            var clientPos = PointToClient(Cursor.Position);
+
+            // Scroll the tree up/down if necessary
+            if (AutoScrollEnabled)
+                AutoScroll(clientPos);
+
+            var nodeOver = GetNodeAt(clientPos);
             var nodeMoving = (TreeNode)e.Data.GetData("System.Windows.Forms.TreeNode");
 
             // nodeOver must not be null, and nodeOver must not be the same as nodeMoving UNLESS
@@ -108,6 +147,28 @@ namespace MarkEmbling.Utils.Forms.Controls {
                     // Node accepts children
                     HandleDraggingOverChildAcceptingNode(offsetY, nodeOver, nodeMoving);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Trigger automatic scrolling up/down if an item is being dragged very high or low
+        /// </summary>
+        /// <param name="clientPos"></param>
+        private void AutoScroll(Point clientPos) {
+            if (clientPos.Y <= AutoScrollThreshold) {
+                if (!_autoScrollTimer.Enabled) {
+                    _autoScrollTimer.Tick += _autoScrollTimer_Tick_scrollUp;
+                    _autoScrollTimer.Start();
+                }
+            } else if (clientPos.Y >= (Height - AutoScrollThreshold)) {
+                if (!_autoScrollTimer.Enabled) {
+                    _autoScrollTimer.Tick += _autoScrollTimer_Tick_scrollDown;
+                    _autoScrollTimer.Start();
+                }
+            } else {
+                _autoScrollTimer.Tick -= _autoScrollTimer_Tick_scrollUp;
+                _autoScrollTimer.Tick -= _autoScrollTimer_Tick_scrollDown;
+                _autoScrollTimer.Stop();
             }
         }
 
@@ -435,6 +496,16 @@ namespace MarkEmbling.Utils.Forms.Controls {
             g.FillPolygon(Brushes.Black, rightTriangle);
         }
 
+        #endregion
+
+        #region Auto-scroll timer event handler methods
+        private void _autoScrollTimer_Tick_scrollUp(object sender, EventArgs e) {
+            SendMessage(Handle, WmVscroll, (IntPtr) SbLineUp, IntPtr.Zero);
+        }
+
+        private void _autoScrollTimer_Tick_scrollDown(object sender, EventArgs e) {
+            SendMessage(Handle, WmVscroll, (IntPtr) SbLineDown, IntPtr.Zero);
+        }
         #endregion
 
         private void SetNewNodeMap(TreeNode tnNode, bool boolBelowNode) {

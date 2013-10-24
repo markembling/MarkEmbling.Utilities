@@ -29,9 +29,9 @@
             this.addLeafButton = new System.Windows.Forms.Button();
             this.removeNodeButton = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.treeView = new MarkEmbling.Utils.Forms.Controls.DragDropTreeView();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.treeView = new MarkEmbling.Utils.Forms.Controls.DragDropTreeView();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,20 +72,6 @@
             this.imageList.Images.SetKeyName(0, "folder.png");
             this.imageList.Images.SetKeyName(1, "tag_green.png");
             // 
-            // treeView
-            // 
-            this.treeView.AllowDrop = true;
-            this.treeView.ImageIndex = 0;
-            this.treeView.ImageList = this.imageList;
-            this.treeView.Location = new System.Drawing.Point(12, 41);
-            this.treeView.Name = "treeView";
-            this.treeView.SelectedImageIndex = 0;
-            this.treeView.Size = new System.Drawing.Size(468, 354);
-            this.treeView.TabIndex = 0;
-            this.treeView.UseNativeAppearance = true;
-            this.treeView.AcceptingDraggedNode += new MarkEmbling.Utils.Forms.AcceptingDraggedNodeHandler(this.treeView_AcceptingDraggedNode);
-            this.treeView.DragDropReorganizeFinished += new MarkEmbling.Utils.Forms.DragDropReorganizeFinishedHandler(this.treeView_DragDropReorganizeFinished);
-            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -100,6 +86,20 @@
             // 
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(0, 17);
+            // 
+            // treeView
+            // 
+            this.treeView.AllowDrop = true;
+            this.treeView.ImageIndex = 0;
+            this.treeView.ImageList = this.imageList;
+            this.treeView.Location = new System.Drawing.Point(12, 41);
+            this.treeView.Name = "treeView";
+            this.treeView.SelectedImageIndex = 0;
+            this.treeView.Size = new System.Drawing.Size(468, 354);
+            this.treeView.TabIndex = 0;
+            this.treeView.UseNativeAppearance = true;
+            this.treeView.AcceptingDraggedNode += new MarkEmbling.Utils.Forms.AcceptingDraggedNodeHandler(this.treeView_AcceptingDraggedNode);
+            this.treeView.DragDropReorganizeFinished += new MarkEmbling.Utils.Forms.DragDropReorganizeFinishedHandler(this.treeView_DragDropReorganizeFinished);
             // 
             // DragDropTreeViewForm
             // 
