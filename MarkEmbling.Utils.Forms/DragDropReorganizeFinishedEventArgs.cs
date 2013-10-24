@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace MarkEmbling.Utils.Forms {
     public delegate void DragDropReorganizeFinishedHandler(object source, DragDropReorganizeFinishedEventArgs e);
@@ -6,7 +7,7 @@ namespace MarkEmbling.Utils.Forms {
     /// <summary>
     /// Provides data for the DragDropReorganizeFinished event of DragDropTreeView.
     /// </summary>
-    public class DragDropReorganizeFinishedEventArgs {
+    public class DragDropReorganizeFinishedEventArgs : EventArgs {
         /// <summary>
         /// The newly moved tree node
         /// </summary>
