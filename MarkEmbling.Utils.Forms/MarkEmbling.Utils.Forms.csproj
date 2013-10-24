@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcceptingDraggedNodeEventArgs.cs" />
     <Compile Include="ClipboardEventArgs.cs" />
     <Compile Include="Controls\ClipboardAwareTextBox.cs">
       <SubType>Component</SubType>

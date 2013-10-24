@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6D1CB2
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils.Forms.Examples", "MarkEmbling.Utils.Forms.Examples\MarkEmbling.Utils.Forms.Examples.csproj", "{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{394CDF74-0214-41F9-A71A-CB70BEE13883}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{394CDF74-0214-41F9-A71A-CB70BEE13883}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{394CDF74-0214-41F9-A71A-CB70BEE13883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

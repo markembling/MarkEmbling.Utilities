@@ -1,6 +1,9 @@
 ﻿using System.ComponentModel;
 
 namespace MarkEmbling.Utils.Forms {
+    /// <summary>
+    /// Provides data for clipboard-centric events.
+    /// </summary>
     public class ClipboardEventArgs : CancelEventArgs {
         public string Text { get; private set; }
 
