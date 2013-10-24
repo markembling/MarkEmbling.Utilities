@@ -30,6 +30,9 @@
             this.removeNodeButton = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.treeView = new MarkEmbling.Utils.Forms.Controls.DragDropTreeView();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // addFolderButton
@@ -80,13 +83,30 @@
             this.treeView.Size = new System.Drawing.Size(468, 354);
             this.treeView.TabIndex = 0;
             this.treeView.UseNativeAppearance = true;
-            this.treeView.AcceptingDraggedNode += new MarkEmbling.Utils.Forms.Controls.AcceptingDraggedNodeHandler(this.treeView_AcceptingDraggedNode);
+            this.treeView.AcceptingDraggedNode += new MarkEmbling.Utils.Forms.AcceptingDraggedNodeHandler(this.treeView_AcceptingDraggedNode);
+            this.treeView.DragDropReorganizeFinished += new MarkEmbling.Utils.Forms.DragDropReorganizeFinishedHandler(this.treeView_DragDropReorganizeFinished);
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 407);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(492, 22);
+            this.statusStrip.TabIndex = 4;
+            this.statusStrip.Text = "statusStrip1";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // DragDropTreeViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 407);
+            this.ClientSize = new System.Drawing.Size(492, 429);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.removeNodeButton);
             this.Controls.Add(this.addLeafButton);
             this.Controls.Add(this.addFolderButton);
@@ -95,7 +115,10 @@
             this.MaximizeBox = false;
             this.Name = "DragDropTreeViewForm";
             this.Text = "DragDropTreeView";
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -106,5 +129,7 @@
         private System.Windows.Forms.Button addLeafButton;
         private System.Windows.Forms.Button removeNodeButton;
         private System.Windows.Forms.ImageList imageList;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
     }
 }

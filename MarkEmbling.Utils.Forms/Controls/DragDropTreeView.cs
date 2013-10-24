@@ -38,6 +38,12 @@ namespace MarkEmbling.Utils.Forms.Controls {
         [Category("Drag Drop"), Description("Occurs when a node is being dragged over another.")]
         public event AcceptingDraggedNodeHandler AcceptingDraggedNode;
 
+        /// <summary>
+        /// Fired when a node has been moved and dropped in its new location in the tree.
+        /// </summary>
+        [Category("Drag Drop"), Description("Occurs when a node has been dropped in a new location.")]
+        public event DragDropReorganizeFinishedHandler DragDropReorganizeFinished;
+
         public DragDropTreeView() {
             // Set up events
             MouseDown += DragDropTreeView_MouseDown;
@@ -221,11 +227,17 @@ namespace MarkEmbling.Utils.Forms.Controls {
                 insertCollection.Insert(Int32.Parse(nodeIndexes[nodeIndexes.Length - 1]), (TreeNode)movingNode.Clone());
                 SelectedNode = insertCollection[Int32.Parse(nodeIndexes[nodeIndexes.Length - 1])];
 
+                // Remove the old ersion of the node
+                movingNode.Remove();
+
                 // Expand if necessary
                 if (SelectedNode.Nodes.Count > 0 && !SelectedNode.IsExpanded)
                     SelectedNode.Expand();
 
-                movingNode.Remove();
+                // Fire the event (if there is a handler attached)
+                var args = new DragDropReorganizeFinishedEventArgs {Node = SelectedNode};
+                if (DragDropReorganizeFinished != null)
+                    DragDropReorganizeFinished(this, args);
             }
         }
 
@@ -452,7 +464,4 @@ namespace MarkEmbling.Utils.Forms.Controls {
             return false;
         }
     }
-
-    public delegate void AcceptingDraggedNodeHandler(object source, AcceptingDraggedNodeEventArgs e);
-
 }

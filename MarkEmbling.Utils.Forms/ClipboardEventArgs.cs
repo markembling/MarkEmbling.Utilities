@@ -11,4 +11,6 @@ namespace MarkEmbling.Utils.Forms {
             Text = text;
         }
     }
+
+    public delegate void ClipboardEventHandler(object sender, ClipboardEventArgs e);
 }

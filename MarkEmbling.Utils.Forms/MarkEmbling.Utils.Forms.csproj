@@ -53,6 +53,7 @@
     <Compile Include="Controls\NativeStyleTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DragDropReorganizeFinishedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

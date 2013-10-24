@@ -1,6 +1,8 @@
 ﻿using System.Windows.Forms;
 
 namespace MarkEmbling.Utils.Forms {
+    public delegate void AcceptingDraggedNodeHandler(object source, AcceptingDraggedNodeEventArgs e);
+
     /// <summary>
     /// Provides data for the AcceptingDraggedNode event of DragDropTreeView.
     /// </summary>

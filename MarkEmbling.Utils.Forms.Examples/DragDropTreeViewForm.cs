@@ -81,5 +81,22 @@ namespace MarkEmbling.Utils.Forms.Examples {
             if (e.NodeOver.ImageIndex > 0)
                 e.PreventDropAsChild = true;
         }
+
+        private void treeView_DragDropReorganizeFinished(object source, DragDropReorganizeFinishedEventArgs e) {
+            // This event is fired when a node is dropped in its new place.
+            // e.Node is the node that has been dropped.
+
+            var parentDescription = 
+                e.Node.Parent != null
+                    ? "under '" + e.Node.Parent.Text + "'"
+                    : "at the top level";
+
+            // Update the status bar to show what happened
+            statusLabel.Text = string.Format(
+                "'{0}' has been positioned at index {1} {2}",
+                e.Node.Text,
+                e.Node.Index,
+                parentDescription);
+        }
     }
 }

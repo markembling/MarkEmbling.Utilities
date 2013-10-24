@@ -18,8 +18,6 @@ namespace MarkEmbling.Utils.Forms.Controls
         private const int WmCopy = 0x0301;
         private const int WmPaste = 0x0302;
 
-        public delegate void ClipboardEventHandler(object sender, ClipboardEventArgs e);
-
         [Category("Clipboard")]
         public event ClipboardEventHandler CutText;
 
