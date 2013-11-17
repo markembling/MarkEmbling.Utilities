@@ -44,7 +44,8 @@
             this.examplesDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.examplesDropDown.FormattingEnabled = true;
             this.examplesDropDown.Items.AddRange(new object[] {
-            "DragDropTreeView"});
+            "DragDropTreeView",
+            "Gauge"});
             this.examplesDropDown.Location = new System.Drawing.Point(15, 30);
             this.examplesDropDown.Name = "examplesDropDown";
             this.examplesDropDown.Size = new System.Drawing.Size(296, 21);

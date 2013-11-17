@@ -23,6 +23,9 @@ namespace MarkEmbling.Utils.Forms.Examples {
                 case 0:
                     new DragDropTreeViewForm().Show(this);
                     break;
+                case 1:
+                    new GaugeForm().Show(this);
+                    break;
             }
         }
     }

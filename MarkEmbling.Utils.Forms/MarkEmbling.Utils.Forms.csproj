@@ -50,6 +50,12 @@
     <Compile Include="Controls\DragDropTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\Gauge.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Gauge.Designer.cs">
+      <DependentUpon>Gauge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\NativeStyleTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
