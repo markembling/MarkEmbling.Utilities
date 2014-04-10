@@ -1,4 +1,5 @@
-﻿using MarkEmbling.Utils.Extensions;
+﻿using System.Linq;
+using MarkEmbling.Utils.Extensions;
 using NUnit.Framework;
 
 namespace MarkEmbling.Utils.Tests.Extensions {

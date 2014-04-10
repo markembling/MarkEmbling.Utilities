@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumHelpersTests.cs" />
     <Compile Include="Extensions\DecimalExtensionsTests.cs" />
     <Compile Include="Extensions\DoubleExtensionsTests.cs" />
     <Compile Include="Extensions\EnumExtensionsTests.cs" />
