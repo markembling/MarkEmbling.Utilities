@@ -45,6 +45,7 @@
     <Compile Include="Extensions\DoubleExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\FloatExtensions.cs" />
+    <Compile Include="Interop\PathUtils.cs" />
     <Compile Include="ToIntMethod.cs" />
     <Compile Include="Grammar\Rules\PluralBasicExceptionalCasesRule.cs" />
     <Compile Include="Grammar\Rules\PluralEsRule.cs" />
