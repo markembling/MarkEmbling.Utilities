@@ -95,6 +95,14 @@ namespace MarkEmbling.Utils.Tests.Extensions {
         }
 
         [Test]
+        public void Truncate_does_not_add_suffix_if_string_is_shorter_than_target() {
+            const string testString = "One two three four five.";
+            var result = testString.Truncate(30, "...");
+
+            Assert.AreEqual(testString, result);
+        }
+
+        [Test]
         public void Truncate_ignores_suffix_if_suffix_is_longer_than_limit() {
             const string testString = "One two three four five.";
             var result = testString.Truncate(6, "XXXXXXXXXX");
@@ -135,6 +143,14 @@ namespace MarkEmbling.Utils.Tests.Extensions {
 
             Assert.AreEqual(10, result.Length);
             Assert.AreEqual("One two...", result);
+        }
+
+        [Test]
+        public void TruncatOnWhitespace_does_not_add_suffix_if_string_is_shorter_than_target() {
+            const string testString = "One two three four five.";
+            var result = testString.TruncateOnWhitespace(30, "...");
+
+            Assert.AreEqual(testString, result);
         }
 
         [Test]
