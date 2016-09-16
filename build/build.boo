@@ -55,7 +55,7 @@ target publish, (package):
     .ForEach def(file):
       filename = Path.GetFileName(file.FullName)
       if prompt("Publish ${filename}...?"):
-        exec("packages/NuGet.CommandLine.3.4.3/tools/NuGet.exe", file.FullName)
+        exec("packages/NuGet.CommandLine.3.4.3/tools/NuGet.exe", "push \"${file.FullName}\" -Source https://nuget.org/api/v2/package")
         #with nuget_push():
         #  .toolPath =  "packages/NuGet.CommandLine.3.4.3/tools/NuGet.exe"
         #  .packagePath = file.FullName
