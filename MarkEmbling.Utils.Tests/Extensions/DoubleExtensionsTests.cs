@@ -27,5 +27,17 @@ namespace MarkEmbling.Utils.Tests.Extensions {
             const double test = 5.378;
             Assert.AreEqual(5, test.ToInt(ToIntMethod.Round));
         }
+
+        [Test]
+        public void Equivalent_returns_true_when_difference_is_smaller_than_precision_value() {
+            const double test = 1.3333334;
+            Assert.IsTrue(test.Equivalent(1.3333333, 0.000001));
+        }
+
+        [Test]
+        public void Equivalent_returns_false_when_difference_is_larger_than_precision_value() {
+            const double test = 1.3333334;
+            Assert.IsTrue(test.Equivalent(1.3333335, 0.000001));
+        }
     }
 }
