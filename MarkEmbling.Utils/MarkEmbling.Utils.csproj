@@ -47,6 +47,7 @@
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\FloatExtensions.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\StreamReaderExtensions.cs" />
     <Compile Include="Interop\PathUtils.cs" />
     <Compile Include="ToIntMethod.cs" />
     <Compile Include="Grammar\Rules\PluralBasicExceptionalCasesRule.cs" />
