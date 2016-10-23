@@ -48,6 +48,7 @@
     <Compile Include="Extensions\DoubleExtensionsTests.cs" />
     <Compile Include="Extensions\EnumExtensionsTests.cs" />
     <Compile Include="Extensions\FloatExtensionsTests.cs" />
+    <Compile Include="Extensions\StreamReaderExtensionsTests.cs" />
     <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Grammar\GrammarTransformerTests.cs" />
     <Compile Include="Grammar\StringGrammarExtensionsTests.cs" />
