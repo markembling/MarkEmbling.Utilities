@@ -11,7 +11,7 @@ namespace MarkEmbling.Utils.Extensions {
         /// <param name="value">Enum value</param>
         /// <returns>Description or raw name</returns>
         public static string GetDescription(this Enum value) {
-            var field = value.GetType().GetTypeInfo().GetField(value.ToString());
+            var field = value.GetType().GetField(value.ToString());
             var attribute = field.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
 
             return attribute == null ? value.ToString() : attribute.Description;
