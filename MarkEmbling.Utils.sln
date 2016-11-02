@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils.Forms.Exa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F42D4509-E237-4FAD-AB03-C9DCA5D8CBE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils.Tests", "test\MarkEmbling.Utils.Tests\MarkEmbling.Utils.Tests.csproj", "{394CDF74-0214-41F9-A71A-CB70BEE13883}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MarkEmbling.Utils.Tests", "test\MarkEmbling.Utils.Tests\MarkEmbling.Utils.Tests.xproj", "{394CDF74-0214-41F9-A71A-CB70BEE13883}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
