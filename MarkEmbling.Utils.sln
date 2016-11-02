@@ -3,17 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils", "MarkEmbling.Utils\MarkEmbling.Utils.csproj", "{4419999C-0C5E-46E8-B5C5-261607425FCD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils.Forms", "MarkEmbling.Utils.Forms\MarkEmbling.Utils.Forms.csproj", "{B3E52C81-AEC0-4FFB-AECB-AE48B3D31475}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils.Tests", "MarkEmbling.Utils.Tests\MarkEmbling.Utils.Tests.csproj", "{394CDF74-0214-41F9-A71A-CB70BEE13883}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils.Forms.Examples", "MarkEmbling.Utils.Forms.Examples\MarkEmbling.Utils.Forms.Examples.csproj", "{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{08E18390-9A55-425D-8A39-34B3C286CEE5}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{13B7AC91-518F-4AF2-90AF-B59FD503D28C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils", "src\MarkEmbling.Utils\MarkEmbling.Utils.csproj", "{4419999C-0C5E-46E8-B5C5-261607425FCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils.Forms", "src\MarkEmbling.Utils.Forms\MarkEmbling.Utils.Forms.csproj", "{B3E52C81-AEC0-4FFB-AECB-AE48B3D31475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils.Forms.Examples", "src\MarkEmbling.Utils.Forms.Examples\MarkEmbling.Utils.Forms.Examples.csproj", "{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F42D4509-E237-4FAD-AB03-C9DCA5D8CBE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils.Tests", "test\MarkEmbling.Utils.Tests\MarkEmbling.Utils.Tests.csproj", "{394CDF74-0214-41F9-A71A-CB70BEE13883}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -69,7 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MarkEmbling.Utils\MarkEmbling.Utils.csproj">
+    <ProjectReference Include="..\..\src\MarkEmbling.Utils\MarkEmbling.Utils.csproj">
       <Project>{4419999c-0c5e-46e8-b5c5-261607425fcd}</Project>
       <Name>MarkEmbling.Utils</Name>
     </ProjectReference>
