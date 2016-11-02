@@ -15,8 +15,8 @@ namespace MarkEmbling.Utils.Extensions {
         /// <param name="rng">Random number generator</param>
         /// <returns>Collection containing the shuffled contents of source</returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rng) {
-            if (source == null) throw new ArgumentNullException("source");
-            if (rng == null) throw new ArgumentNullException("rng");
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (rng == null) throw new ArgumentNullException(nameof(rng));
             
             var buffer = source.ToList();  // Buffer the entire collection so we can shuffle it. Breaks linq deferral though.
             int k = buffer.Count;
