@@ -1,5 +1,8 @@
 {
-  "version": "1.0.0-*",
+  "title": "MarkEmbling.Utils",
+  "copyright": "Copyright © Mark Embling 2013-2016",
+  "version": "0.0.10-*",
+  "authors": ["Mark Embling"],
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
