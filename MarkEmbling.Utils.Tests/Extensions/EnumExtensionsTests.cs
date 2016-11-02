@@ -1,26 +1,24 @@
-﻿using System.Linq;
-using MarkEmbling.Utils.Extensions;
-using NUnit.Framework;
+﻿using MarkEmbling.Utils.Extensions;
+using Xunit;
 
 namespace MarkEmbling.Utils.Tests.Extensions {
-    [TestFixture]
     public class EnumExtensionsTests {
-        enum TestEnum {
+        private enum TestEnum {
             [System.ComponentModel.Description("Item one")]
             One,
             Two
         }
         
-        [Test]
+        [Fact]
         public void GetDescription_returns_description_attribute_value() {
             var result = TestEnum.One.GetDescription();
-            Assert.AreEqual("Item one", result);
+            Assert.Equal("Item one", result);
         }
 
-        [Test]
+        [Fact]
         public void GetDescription_returns_literal_string_value_when_no_description_attribute() {
             var result = TestEnum.Two.GetDescription();
-            Assert.AreEqual("Two", result);
+            Assert.Equal("Two", result);
         }
     }
 }

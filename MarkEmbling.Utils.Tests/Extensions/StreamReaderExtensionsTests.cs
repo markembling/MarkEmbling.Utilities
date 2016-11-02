@@ -1,24 +1,21 @@
 ﻿using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using MarkEmbling.Utils.Extensions;
-using NUnit.Framework;
+using Xunit;
 
 namespace MarkEmbling.Utils.Tests.Extensions {
-    [TestFixture]
     public class StreamReaderExtensionsTests {
-        [Test]
+        [Fact]
         public void ReadAllLines_returns_all_lines_in_stream() {
             using (var stream = StreamWithLines())
             using (var reader = new StreamReader(stream)) {
                 var lines = reader.ReadAllLines().ToArray();
 
-                Assert.AreEqual(4, lines.Length);
-                Assert.AreEqual("Line 1", lines[0]);
-                Assert.AreEqual("Line 2", lines[1]);
-                Assert.AreEqual("Line 3", lines[2]);
-                Assert.AreEqual("Line 4", lines[3]);
+                Assert.Equal(4, lines.Length);
+                Assert.Equal("Line 1", lines[0]);
+                Assert.Equal("Line 2", lines[1]);
+                Assert.Equal("Line 3", lines[2]);
+                Assert.Equal("Line 4", lines[3]);
             }
         }
 

@@ -4,7 +4,7 @@ namespace MarkEmbling.Utils.Tests.Grammar {
     /// <summary>
     /// Test rule
     /// </summary>
-    class TestRule : IGrammarTransformRule {
+    internal class TestRule : IGrammarTransformRule {
         public bool CanTransform(string input) {
             return true;
         }
@@ -17,7 +17,7 @@ namespace MarkEmbling.Utils.Tests.Grammar {
     /// <summary>
     /// Test rule which cannot transform any string
     /// </summary>
-    class TestUselessRule : IGrammarTransformRule {
+    internal class TestUselessRule : IGrammarTransformRule {
         public bool CanTransform(string input) {
             return false;
         }
