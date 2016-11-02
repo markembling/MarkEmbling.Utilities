@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace MarkEmbling.Utils.Extensions {
     public static class EnumExtensions {
@@ -10,9 +11,8 @@ namespace MarkEmbling.Utils.Extensions {
         /// <param name="value">Enum value</param>
         /// <returns>Description or raw name</returns>
         public static string GetDescription(this Enum value) {
-            var field = value.GetType().GetField(value.ToString());
-            var attribute = Attribute.GetCustomAttribute(field, typeof (DescriptionAttribute))
-                            as DescriptionAttribute;
+            var field = value.GetType().GetTypeInfo().GetField(value.ToString());
+            var attribute = field.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
 
             return attribute == null ? value.ToString() : attribute.Description;
         }
