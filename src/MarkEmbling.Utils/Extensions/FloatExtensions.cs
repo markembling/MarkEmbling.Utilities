@@ -9,13 +9,14 @@ namespace MarkEmbling.Utils.Extensions {
         /// <param name="method">Conversion method</param>
         /// <returns>Integer representation</returns>
         public static int ToInt(this float value, ToIntMethod method) {
-            if (method == ToIntMethod.IgnoreFraction)
-                return (int) value;
-
-            if (method == ToIntMethod.Round)
-                return Convert.ToInt32(value);
-
-            throw new InvalidOperationException();
+            switch (method) {
+                case ToIntMethod.IgnoreFraction:
+                    return (int) value;
+                case ToIntMethod.Round:
+                    return Convert.ToInt32(value);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(method), method, null);
+            }
         }
 
         /// <summary>
