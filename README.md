@@ -7,13 +7,13 @@ Miscellaneous bits and pieces (.NET) which don't fit anywhere else but need some
 
 Extension methods, helpers and other common bits with no special requirements. A lot of this is stuff I might otherwise find myself copying into many projects - and nobody wants that mess - so they're packaged up here for easy re-use.
 
-[Available](https://www.nuget.org/packages/MarkEmbling.Utils/) on NuGet.
+[Available on NuGet](https://www.nuget.org/packages/MarkEmbling.Utils/).
 
 ### MarkEmbling.Utils.Forms
 
 Custom controls and any other Windows Forms specifics which again don't really belong anywhere else.
 
-[Available](https://www.nuget.org/packages/MarkEmbling.Utils.Forms/) on NuGet.
+[Available on NuGet](https://www.nuget.org/packages/MarkEmbling.Utils.Forms/).
 
  - `ClipboardAwareTextBox`
     - Inherits from `TextBox` and exposes events for clipboard events (cut/copy/paste).
