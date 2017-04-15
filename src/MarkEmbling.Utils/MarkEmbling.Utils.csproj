@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Copyright>Copyright © Mark Embling 2013-2016</Copyright>
+    <AssemblyTitle>MarkEmbling.Utils</AssemblyTitle>
+    <VersionPrefix>0.0.10</VersionPrefix>
+    <Authors>Mark Embling</Authors>
+    <TargetFramework>netstandard1.1</TargetFramework>
+    <AssemblyName>MarkEmbling.Utils</AssemblyName>
+    <PackageId>MarkEmbling.Utils</PackageId>
+    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Primitives" Version="4.1.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.1.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,24 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{08E18390-9A55-425D-8A39-34B3C286CEE5}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{13B7AC91-518F-4AF2-90AF-B59FD503D28C}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MarkEmbling.Utils", "src\MarkEmbling.Utils\MarkEmbling.Utils.xproj", "{4419999C-0C5E-46E8-B5C5-261607425FCD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F42D4509-E237-4FAD-AB03-C9DCA5D8CBE3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkEmbling.Utils", "src\MarkEmbling.Utils\MarkEmbling.Utils.csproj", "{4419999C-0C5E-46E8-B5C5-261607425FCD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils.Forms", "src\MarkEmbling.Utils.Forms\MarkEmbling.Utils.Forms.csproj", "{B3E52C81-AEC0-4FFB-AECB-AE48B3D31475}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkEmbling.Utils.Forms.Examples", "src\MarkEmbling.Utils.Forms.Examples\MarkEmbling.Utils.Forms.Examples.csproj", "{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F42D4509-E237-4FAD-AB03-C9DCA5D8CBE3}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MarkEmbling.Utils.Tests", "test\MarkEmbling.Utils.Tests\MarkEmbling.Utils.Tests.xproj", "{394CDF74-0214-41F9-A71A-CB70BEE13883}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarkEmbling.Utils.Tests", "test\MarkEmbling.Utils.Tests\MarkEmbling.Utils.Tests.csproj", "{394CDF74-0214-41F9-A71A-CB70BEE13883}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,14 +31,14 @@ Global
 		{B3E52C81-AEC0-4FFB-AECB-AE48B3D31475}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3E52C81-AEC0-4FFB-AECB-AE48B3D31475}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3E52C81-AEC0-4FFB-AECB-AE48B3D31475}.Release|Any CPU.Build.0 = Release|Any CPU
-		{394CDF74-0214-41F9-A71A-CB70BEE13883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{394CDF74-0214-41F9-A71A-CB70BEE13883}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{394CDF74-0214-41F9-A71A-CB70BEE13883}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{394CDF74-0214-41F9-A71A-CB70BEE13883}.Release|Any CPU.Build.0 = Release|Any CPU
 		{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{394CDF74-0214-41F9-A71A-CB70BEE13883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{394CDF74-0214-41F9-A71A-CB70BEE13883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{394CDF74-0214-41F9-A71A-CB70BEE13883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{394CDF74-0214-41F9-A71A-CB70BEE13883}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,7 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4419999C-0C5E-46E8-B5C5-261607425FCD} = {13B7AC91-518F-4AF2-90AF-B59FD503D28C}
 		{B3E52C81-AEC0-4FFB-AECB-AE48B3D31475} = {13B7AC91-518F-4AF2-90AF-B59FD503D28C}
-		{394CDF74-0214-41F9-A71A-CB70BEE13883} = {F42D4509-E237-4FAD-AB03-C9DCA5D8CBE3}
 		{62A043E2-B20A-468A-9EB3-4ACD9ED4F2A3} = {13B7AC91-518F-4AF2-90AF-B59FD503D28C}
+		{394CDF74-0214-41F9-A71A-CB70BEE13883} = {F42D4509-E237-4FAD-AB03-C9DCA5D8CBE3}
 	EndGlobalSection
 EndGlobal
