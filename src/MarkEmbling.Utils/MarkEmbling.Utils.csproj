@@ -15,6 +15,11 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Description>Various extension methods and other commonly used reusable bits.</Description>
+    <PackageProjectUrl>https://github.com/markembling/MarkEmbling.Utils</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/markembling/MarkEmbling.Utils/blob/master/LICENSE</PackageLicenseUrl>
+    <Version>0.0.10</Version>
+    <AssemblyVersion>0.0.10.0</AssemblyVersion>
+    <FileVersion>0.0.10.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
