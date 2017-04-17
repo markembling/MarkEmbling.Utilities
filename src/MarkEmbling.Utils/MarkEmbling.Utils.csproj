@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Copyright>Copyright © Mark Embling 2013-2016</Copyright>
+    <Copyright>Copyright © Mark Embling 2013-2017</Copyright>
     <AssemblyTitle>MarkEmbling.Utils</AssemblyTitle>
     <VersionPrefix>0.0.10</VersionPrefix>
     <Authors>Mark Embling</Authors>
@@ -13,6 +13,8 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>Various extension methods and other commonly used reusable bits.</Description>
   </PropertyGroup>
 
   <ItemGroup>
