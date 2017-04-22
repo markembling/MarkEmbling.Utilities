@@ -65,36 +65,62 @@ namespace MarkEmbling.Utils.Extensions {
         }
 
         /// <summary>
-        /// Truncate a string on the last occurance of whitespace within the given
-        /// character limit.
+        /// Truncate a string on the last occurance of any of the given characters
+        /// within the given character limit
         /// </summary>
         /// <param name="str">Current string instance</param>
         /// <param name="maxLength">Maximum number of characters</param>
-        public static string TruncateOnWhitespace(this string str, int maxLength) {
+        /// <param name="characters">Characters to truncate on</param>
+        /// <returns>Truncated string</returns>
+        public static string TruncateOnCharacters(this string str, int maxLength, char[] characters) {
             if (str.Length <= maxLength) return str;
 
-            var whitespace = new[]{' ', '\r', '\n', '\t'};
             var truncatedOnLimit = Truncate(str, maxLength);
-            var indexOfLastSpace = truncatedOnLimit.LastIndexOfAny(whitespace);
-            return indexOfLastSpace == -1
+            var indexOfLastViableCharacter = truncatedOnLimit.LastIndexOfAny(characters);
+            return indexOfLastViableCharacter == -1
                 ? truncatedOnLimit
-                : Truncate(truncatedOnLimit, indexOfLastSpace);
+                : Truncate(truncatedOnLimit, indexOfLastViableCharacter);
+        }
+
+        /// <summary>
+        /// Truncate a string on the last occurance of any of the given characters
+        /// within the given character limit, applying the given suffix
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="maxLength">Maximum number of characters</param>
+        /// <param name="characters">Characters to truncate on</param>
+        /// <param name="suffix">Suffix to append to result</param>
+        /// <returns>Truncated and suffixed string</returns>
+        public static string TruncateOnCharacters(this string str, int maxLength, char[] characters, string suffix) {
+            if (str.Length > maxLength && str.Length > suffix.Length && suffix.Length < maxLength) {
+                var truncatedLeavingRoomForSuffix = TruncateOnCharacters(str, maxLength - suffix.Length, characters);
+                return truncatedLeavingRoomForSuffix + suffix;
+            }
+
+            return TruncateOnCharacters(str, maxLength, characters);
         }
 
         /// <summary>
         /// Truncate a string on the last occurance of whitespace within the given
-        /// character limit, applying the given suffix.
+        /// character limit
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="maxLength">Maximum number of characters</param>
+        /// <returns>Truncated string</returns>
+        public static string TruncateOnWhitespace(this string str, int maxLength) {
+            return TruncateOnCharacters(str, maxLength, new[] { ' ', '\r', '\n', '\t' });
+        }
+
+        /// <summary>
+        /// Truncate a string on the last occurance of whitespace within the given
+        /// character limit, applying the given suffix
         /// </summary>
         /// <param name="str">Current string instance</param>
         /// <param name="maxLength">Maximum number of characters</param>
         /// <param name="suffix">Suffix to append to the end of the truncated string</param>
+        /// <returns>Truncated and suffixed string</returns>
         public static string TruncateOnWhitespace(this string str, int maxLength, string suffix) {
-            if (str.Length > maxLength && str.Length > suffix.Length && suffix.Length < maxLength) {
-                var truncatedLeavingRoomForSuffix = TruncateOnWhitespace(str, maxLength - suffix.Length);
-                return truncatedLeavingRoomForSuffix + suffix;
-            }
-
-            return TruncateOnWhitespace(str, maxLength);
+            return TruncateOnCharacters(str, maxLength, new[] { ' ', '\r', '\n', '\t' }, suffix);
         }
     }
 }

@@ -120,7 +120,58 @@ namespace MarkEmbling.Utils.Tests.Extensions {
         }
 
         [Fact]
-        public void TruncateOnSpace_truncates_on_last_space_before_limit() {
+        public void TruncateOnCharacters_truncates_on_last_candidate_character_before_limit() {
+            const string testString = "One_two_three_four_five.";
+            var result = testString.TruncateOnCharacters(12, new[] { '_' });
+            Assert.Equal(7, result.Length);
+        }
+
+        [Fact]
+        public void TruncateOnCharacters_cuts_off_word_if_no_candidates_found() {
+            const string testString = "Onetwothreefourfive.";
+            var result = testString.TruncateOnCharacters(8, new[] { '_' });
+
+            Assert.Equal(8, result.Length);
+            Assert.Equal("Onetwoth", result);
+        }
+
+        [Fact]
+        public void TruncateOnCharacters_can_append_suffix_if_provided_and_stay_within_character_limit() {
+            const string testString = "One_two_three_four_five.";
+            var result = testString.TruncateOnCharacters(12, new[] { '_' }, "...");
+
+            Assert.Equal(10, result.Length);
+            Assert.Equal("One_two...", result);
+        }
+
+        [Fact]
+        public void TruncatOnCharacters_does_not_add_suffix_if_string_is_shorter_than_target() {
+            const string testString = "One_two_three_four_five.";
+            var result = testString.TruncateOnCharacters(30, new[] { '_' }, "...");
+
+            Assert.Equal(testString, result);
+        }
+
+        [Fact]
+        public void TruncateOnCharacters_ignores_suffix_if_suffix_is_longer_than_limit() {
+            const string testString = "One_two_three_four_five.";
+            var result = testString.TruncateOnCharacters(6, new[] { '_' }, "XXXXXXXXXX");
+
+            Assert.Equal(3, result.Length);
+            Assert.Equal("One", result);
+        }
+
+        [Fact]
+        public void TruncateOnCharacters_ignores_suffix_if_suffix_is_same_length_as_limit() {
+            const string testString = "One_two_three_four_five.";
+            var result = testString.TruncateOnCharacters(6, new[] { '_' }, "XXXXXX");
+
+            Assert.Equal(3, result.Length);
+            Assert.Equal("One", result);
+        }
+
+        [Fact]
+        public void TruncateOnWhitespace_truncates_on_last_space_before_limit() {
             const string testString = "One two three four five.";
             var result = testString.TruncateOnWhitespace(12);
             Assert.Equal(7, result.Length);
