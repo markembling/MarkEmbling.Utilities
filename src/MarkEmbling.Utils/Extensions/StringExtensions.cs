@@ -3,17 +3,21 @@
 namespace MarkEmbling.Utils.Extensions {
     public static class StringExtensions {
         /// <summary>
-        /// Determine if this string is equal to another, ignoring casing.
+        /// Determine if this string is equal to another, ignoring casing
         /// </summary>
         /// <param name="str">Current string instance</param>
         /// <param name="value">The string to compare to this instance</param>
+        /// <returns>Whether or not the strings are equal, not accounting for case</returns>
         public static bool EqualsWithoutCase(this string str, string value) {
             return str.Equals(value, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
-        /// Returns the first N characters from the string.
+        /// Returns the first N characters from the string
         /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="length">Number of characters to return</param>
+        /// <returns>String containing the appropriate characters</returns>
         public static string First(this string str, int length) {
             return string.IsNullOrEmpty(str)
                 ? string.Empty
@@ -21,15 +25,20 @@ namespace MarkEmbling.Utils.Extensions {
         }
 
         /// <summary>
-        /// Returns the first character from the string.
+        /// Returns the first character from the string
         /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <returns>String containing the first character</returns>
         public static string First(this string str) {
             return str.First(1);
         }
 
         /// <summary>
-        /// Returns the last N characters from the string.
+        /// Returns the last N characters from the string
         /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="length">Number of characters to return</param>
+        /// <returns>String containing the appropriate characters</returns>
         public static string Last(this string str, int length) {
             return string.IsNullOrEmpty(str)
                 ? string.Empty
@@ -37,27 +46,31 @@ namespace MarkEmbling.Utils.Extensions {
         }
 
         /// <summary>
-        /// Returns the last character from the string.
+        /// Returns the last character from the string
         /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <returns>String containing the last character</returns>
         public static string Last(this string str) {
             return str.Last(1);
         }
 
         /// <summary>
-        /// Truncate a string to the given number of characters.
+        /// Truncate a string to the given number of characters
         /// </summary>
         /// <param name="str">Current string instance</param>
         /// <param name="maxLength">Maximum number of characters</param>
+        /// <returns>Truncated string</returns>
         public static string Truncate(this string str, int maxLength) {
             return str.Length > maxLength ? str.Substring(0, maxLength) : str;
         }
 
         /// <summary>
-        /// Truncate a string to the given number of characters, applying the given suffix.
+        /// Truncate a string to the given number of characters, applying the given suffix
         /// </summary>
         /// <param name="str">Current string instance</param>
         /// <param name="maxLength">Maximum number of characters</param>
         /// <param name="suffix">Suffix to append to the end of the truncated string</param>
+        /// <returns>Truncated and suffixed string</returns>
         public static string Truncate(this string str, int maxLength, string suffix) {
             if (str.Length > maxLength && str.Length > suffix.Length && suffix.Length < maxLength)
                 return Truncate(str, maxLength - suffix.Length) + suffix;
