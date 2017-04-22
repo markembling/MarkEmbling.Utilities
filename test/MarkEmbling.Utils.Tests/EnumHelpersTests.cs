@@ -3,7 +3,7 @@ using System.Linq;
 using Xunit;
 
 namespace MarkEmbling.Utils.Tests {
-    public class EnumHelpersTests {
+    public class EnumHelperTests {
         private enum TestEnum {
             One,
             Two
@@ -11,7 +11,7 @@ namespace MarkEmbling.Utils.Tests {
 
         [Fact]
         public void GetValuesList_returns_list_of_enum_values() {
-            var result = EnumHelpers.GetValuesList<TestEnum>();
+            var result = EnumHelper.GetValuesList<TestEnum>();
             Assert.Equal(result.Count(), 2);
             Assert.Equal(result.ElementAt(0), TestEnum.One);
             Assert.Equal(result.ElementAt(1), TestEnum.Two);
@@ -21,7 +21,7 @@ namespace MarkEmbling.Utils.Tests {
         public void GetValuesList_throws_on_non_enum_type() {
             // Required due to the fact that it's currently impossible to set a type constraint
             // for enums.
-            Assert.Throws<InvalidOperationException>(() => EnumHelpers.GetValuesList<string>());
+            Assert.Throws<InvalidOperationException>(() => EnumHelper.GetValuesList<string>());
         }
     }
 }

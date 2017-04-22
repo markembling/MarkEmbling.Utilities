@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 
 namespace MarkEmbling.Utils {
-    public class EnumHelpers {
+    public class EnumHelper {
         /// <summary>
         /// Gets a list containing all values from the given enum
         /// </summary>
