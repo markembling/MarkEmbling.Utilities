@@ -15,10 +15,9 @@ namespace MarkEmbling.Utils.Extensions {
         /// Returns the first N characters from the string.
         /// </summary>
         public static string First(this string str, int length) {
-            return 
-                string.IsNullOrEmpty(str) ? 
-                string.Empty : 
-                str.Substring(0, length);
+            return string.IsNullOrEmpty(str)
+                ? string.Empty
+                : str.Substring(0, length);
         }
 
         /// <summary>
@@ -32,10 +31,9 @@ namespace MarkEmbling.Utils.Extensions {
         /// Returns the last N characters from the string.
         /// </summary>
         public static string Last(this string str, int length) {
-            return 
-                string.IsNullOrEmpty(str) ? 
-                string.Empty : 
-                str.Substring(str.Length - length);
+            return string.IsNullOrEmpty(str)
+                ? string.Empty
+                : str.Substring(str.Length - length);
         }
 
         /// <summary>
