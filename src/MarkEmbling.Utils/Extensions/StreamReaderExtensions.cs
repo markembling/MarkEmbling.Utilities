@@ -6,7 +6,7 @@ namespace MarkEmbling.Utils.Extensions {
         /// <summary>
         /// Reads all available lines from the current stream
         /// </summary>
-        /// <param name="reader">StreamReader instance</param>
+        /// <param name="reader">Current StreamReader instance</param>
         /// <returns>All lines read from the stream</returns>
         public static IEnumerable<string> ReadAllLines(this StreamReader reader) {
             string line;

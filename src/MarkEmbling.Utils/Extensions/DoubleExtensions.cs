@@ -3,7 +3,7 @@
 namespace MarkEmbling.Utils.Extensions {
     public static class DoubleExtensions {
         /// <summary>
-        /// Return the integer representation of this double
+        /// Return an integer representation of this double
         /// </summary>
         /// <param name="value">Current double instance</param>
         /// <param name="method">Conversion method</param>
@@ -22,7 +22,7 @@ namespace MarkEmbling.Utils.Extensions {
         /// <summary>
         /// Determine if a double is equivalent to the given double up to the level of precision provided
         /// </summary>
-        /// <param name="double1">Double to compare</param>
+        /// <param name="double1">Current double instance</param>
         /// <param name="double2">Double to compare against</param>
         /// <param name="precision">Precision (number which defines the difference between the numbers which is considered different)</param>
         /// <returns>True if considered equivalent</returns>

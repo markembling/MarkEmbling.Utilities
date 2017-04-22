@@ -5,13 +5,13 @@ using System.Linq;
 namespace MarkEmbling.Utils.Extensions {
     public static class EnumerableExtensions {
         /// <summary>
-        /// Return a shuffled version of an IEnumerable collection
+        /// Return a shuffled version of this collection
         /// 
         /// This method internally buffers source using ToList and thus will trigger
         /// any deferred linq execution. Based upon http://stackoverflow.com/questions/273313/randomize-a-listt/1262619#1262619
         /// </summary>
         /// <typeparam name="T">Collection type</typeparam>
-        /// <param name="source">Source collection</param>
+        /// <param name="source">Current collection instance</param>
         /// <param name="rng">Random number generator</param>
         /// <returns>Collection containing the shuffled contents of source</returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source, Random rng) {
@@ -32,7 +32,7 @@ namespace MarkEmbling.Utils.Extensions {
         }
 
         /// <summary>
-        /// Return a shuffled version of an IEnumerable collection
+        /// Return a shuffled version of this collection
         /// 
         /// This method internally buffers source using ToList and thus will trigger
         /// any deferred linq execution. It will create an instance of System.Random
@@ -40,7 +40,7 @@ namespace MarkEmbling.Utils.Extensions {
         /// own, use the overload which takes a System.Random.
         /// </summary>
         /// <typeparam name="T">Collection type</typeparam>
-        /// <param name="source">Source collection</param>
+        /// <param name="source">Current collection instance</param>
         /// <returns>Collection containing the shuffled contents of source</returns>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source) {
             return source.Shuffle(new Random());

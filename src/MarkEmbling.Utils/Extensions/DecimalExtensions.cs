@@ -3,7 +3,7 @@
 namespace MarkEmbling.Utils.Extensions {
     public static class DecimalExtensions {
         /// <summary>
-        /// Return the integer representation of this decimal
+        /// Return an integer representation of this decimal
         /// </summary>
         /// <param name="value">Current decimal instance</param>
         /// <param name="method">Conversion method</param>
