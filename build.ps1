@@ -1,20 +1,56 @@
-# Clean, restore packages, build
-dotnet clean --configuration Release
-dotnet restore
-dotnet build --configuration Release
+[CmdletBinding()]
+Param([string[]]$tasks)
 
-# Run tests and exit if there are any errors
-dotnet test test/MarkEmbling.Utils.Tests/MarkEmbling.Utils.Tests.csproj --configuration Release
-if ($lastExitCode -ne 0) { exit $lastExitCode }
+# Clean all projects
+function clean {
+    dotnet clean --configuration "Release"
+}
+
+# Restore NuGet packages for all projects
+function restore {
+    dotnet restore
+}
+
+# Build projects
+function build {
+    dotnet build --configuration "Release"
+}
+
+# Execute the tests
+function test {
+    dotnet test "test/MarkEmbling.Utilities.Tests/MarkEmbling.Utilities.Tests.csproj" --configuration "Release"
+}
 
 # Publish packages to the NuGet gallery
-$files = Get-ChildItem src/MarkEmbling.Utils/bin/Release -Filter *.nupkg
-foreach ($file in $files) {
-    $choices = @()
-    $choices += [Management.Automation.Host.ChoiceDescription]::new("&Publish", "Publish this package to the NuGet gallery")
-    $choices += [Management.Automation.Host.ChoiceDescription]::new("&Skip", "Skip this package")
-    $answer = $Host.UI.PromptForChoice("Publish Package", "Publish $file to the NuGet gallery?", $choices, 1)
-    if ($answer -eq 0) {
-        dotnet nuget push $file.FullName --source https://www.nuget.org
+function publish {
+    $packages = Get-ChildItem src -Filter *.nupkg
+    foreach ($package in $packages) {
+        $choices = @(
+            [Management.Automation.Host.ChoiceDescription]::new("&Publish", "Publish this package to the NuGet gallery"),
+            [Management.Automation.Host.ChoiceDescription]::new("&Skip", "Skip this package")
+        )
+        $answer = $Host.UI.PromptForChoice("Publish Package", "Publish $package to the NuGet gallery?", $choices, 1)
+        if ($answer -eq 0) {
+            dotnet nuget push $package.FullName --source https://www.nuget.org
+        }
     }
+}
+
+# Default tasks
+if ($tasks.Count -eq 0) {
+    $tasks = @("clean", "restore", "build", "test")
+}
+
+# Execute
+foreach ($task in $tasks) {
+    Write-Host "Running task $task..." -ForegroundColor DarkGray
+    switch($task) {
+        "clean" { clean }
+        "restore" { restore }
+        "build" { build }
+        "test" { test }
+        "publish" { publish }
+        default { Write-Host "Task $task not recognised." -ForegroundColor Red }
+    }
+    if ($lastExitCode -ne $null -and $lastExitCode -ne 0) { exit $lastExitCode }
 }
