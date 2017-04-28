@@ -5,10 +5,10 @@ using System.Reflection;
 namespace MarkEmbling.Utilities.Extensions {
     public static class EnumExtensions {
         /// <summary>
-        /// Gets the description of an enumeration field
+        /// Gets the description of an enumeration value
         /// 
         /// If there is no description attribute for this enumeration value, the
-        /// raw name of the field is provided.
+        /// raw name of the value is provided.
         /// </summary>
         /// <param name="value">Current enum value</param>
         /// <returns>Description or raw name</returns>
