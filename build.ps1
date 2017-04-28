@@ -3,6 +3,10 @@ Param([string[]]$tasks)
 
 # Clean all projects
 function clean {
+    $bins = Get-ChildItem -Directory -Recurse -Filter bin
+    foreach ($bin in $bins) {
+        Remove-Item $bin.FullName -Recurse -Force
+    }
     dotnet clean --configuration "Release"
 }
 
@@ -23,7 +27,7 @@ function test {
 
 # Publish packages to the NuGet gallery
 function publish {
-    $packages = Get-ChildItem src -Filter *.nupkg
+    $packages = Get-ChildItem src -Recurse -Filter *.nupkg
     foreach ($package in $packages) {
         $choices = @(
             [Management.Automation.Host.ChoiceDescription]::new("&Publish", "Publish this package to the NuGet gallery"),
