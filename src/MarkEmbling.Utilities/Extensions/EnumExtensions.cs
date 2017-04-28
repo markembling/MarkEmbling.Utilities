@@ -24,7 +24,7 @@ namespace MarkEmbling.Utilities.Extensions {
         /// </summary>
         /// <param name="value">Current enum value</param>
         /// <returns>Underlying numeric value</returns>
-        public static object GetUnderlyingValue(this Enum value) {
+        public static object GetNumericValue(this Enum value) {
             var type = Enum.GetUnderlyingType(value.GetType());
             return Convert.ChangeType(value, type);
         }
@@ -35,7 +35,7 @@ namespace MarkEmbling.Utilities.Extensions {
         /// <typeparam name="T">Underlying numeric type of the enum</typeparam>
         /// <param name="value">Current enum value</param>
         /// <returns>Underlying numeric value as T</returns>
-        public static T GetUnderlyingValue<T>(this Enum value) {
+        public static T GetNumericValue<T>(this Enum value) {
             var enumType = value.GetType();
             var underlyingType = Enum.GetUnderlyingType(enumType);
             var expectedType = typeof(T);

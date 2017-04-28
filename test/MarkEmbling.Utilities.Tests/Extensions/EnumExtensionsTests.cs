@@ -23,27 +23,27 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         }
 
         [Fact]
-        public void GetUnderlyingValue_gets_underlying_numeric_value() {
-            var result = TestEnum.One.GetUnderlyingValue();
+        public void GetNumericValue_gets_underlying_numeric_value() {
+            var result = TestEnum.One.GetNumericValue();
             Assert.Equal(0, result);
         }
 
         [Fact]
-        public void GetUnderlyingValue_gets_correct_underlying_type() {
-            var result = TestEnum.One.GetUnderlyingValue();
+        public void GetNumericValue_gets_correct_underlying_type() {
+            var result = TestEnum.One.GetNumericValue();
             Assert.IsType<int>(result);
         }
 
         [Fact]
-        public void GetUnderlyingValueGeneric_gets_underlying_numeric_value() {
-            var result = TestEnum.One.GetUnderlyingValue<int>();
+        public void GetNumericValueGeneric_gets_underlying_numeric_value() {
+            var result = TestEnum.One.GetNumericValue<int>();
             Assert.Equal(0, result);
         }
 
         [Fact]
-        public void GetUnderlyingValueGeneric_throws_appropriate_exception_if_types_mismatch() {
+        public void GetNumericValueGeneric_throws_appropriate_exception_if_types_mismatch() {
             var exception = Assert.Throws<InvalidOperationException>(
-               () => TestEnum.One.GetUnderlyingValue<long>());
+               () => TestEnum.One.GetNumericValue<long>());
             Assert.Equal(
                 "TestEnum has the underlying type of Int32 instead of Int64", 
                 exception.Message);
