@@ -1,33 +1,14 @@
-MarkEmbling.Utils
-=================
+MarkEmbling.Utilities
+=====================
 
-Miscellaneous bits and pieces (.NET) which don't fit anywhere else but need somewhere to live.
+A collection of common extension methods, helpers and other frequently used code. This package serves to keep them all together and allows easy re-use and versioning across projects.
 
-### MarkEmbling.Utils
+This package is [available on NuGet](https://www.nuget.org/packages/MarkEmbling.Utilities/).
 
-Extension methods, helpers and other common bits with no special requirements. A lot of this is stuff I might otherwise find myself copying into many projects - and nobody wants that mess - so they're packaged up here for easy re-use.
+Tests based on [xUnit](https://xunit.github.io/) can be found in the `test/MarkEmbling.Utilities.Tests` project.
 
-[Available on NuGet](https://www.nuget.org/packages/MarkEmbling.Utils/).
+This package replaces the previous `MarkEmbling.Utils` package and targets .NET Standard 1.1. As well as the extension methods and helpers which are provided in this package, `MarkEmbling.Utils` used to contain the following:
 
-### MarkEmbling.Utils.Forms
-
-Custom controls and any other Windows Forms specifics which again don't really belong anywhere else.
-
-[Available on NuGet](https://www.nuget.org/packages/MarkEmbling.Utils.Forms/).
-
- - `ClipboardAwareTextBox`
-    - Inherits from `TextBox` and exposes events for clipboard events (cut/copy/paste).
- - `NativeStyleTreeView`
-    - Extends `TreeView` and adds a property to toggle between the standard .NET TreeView appearance and the 'native' Explorer style appearance (updated expend/contract buttons and selection style)
- - `DragDropTreeView`
-    - Extends the above `NativeStyleTreeView` control and adds the ability to re-order nodes via drag and drop. Remember to change the `AllowDrop` property to true to enable this.
- - `Gauge`
-    - Gauge control based upon [AGauge](http://www.codeproject.com/Articles/448721/AGauge-WinForms-Gauge-Control). Currently buggy when using 3D-style needles and there are more features to be implemented, but is usable.
-
-### MarkEmbling.Utils.Tests
-
-[xUnit](https://xunit.github.io/) tests for the `MarkEmbling.Utils` project.
-
-### MarkEmbling.Utils.Forms.Examples
-
-A little Windows Forms app which demos some of the controls from `MarkEmbling.Utils.Forms`. Not very comprehensive.
+ - Features for pluralising words and so on - these have now moved to [`MarkEmbling.Grammar`](https://github.com/markembling/MarkEmbling.Grammar) where they will continue to be developed and maintained, targetting .NET Standard.
+ - Windows Forms controls - these were wrapped up in the `MarkEmbling.Utils` solution and published to the [`MarkEmbling.Utils.Forms` NuGet package](https://www.nuget.org/packages/MarkEmbling.Utils.Forms/). I'll be finding an appropriate place to put these in due course but I'm not expecting to do that much development to them going forward.
+ 
