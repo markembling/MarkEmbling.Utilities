@@ -4,7 +4,7 @@
     <TargetFramework>netstandard1.1</TargetFramework>
     <Authors>Mark Embling</Authors>
     <Company>Mark Embling</Company>
-    <Description>Various extension methods and other commonly used reusable bits.</Description>
+    <Description>A collection of common extension methods, helpers and other frequently used code.</Description>
     <PackageProjectUrl>https://github.com/markembling/MarkEmbling.Utils</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/markembling/MarkEmbling.Utils/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright © Mark Embling 2013-2017</Copyright>
