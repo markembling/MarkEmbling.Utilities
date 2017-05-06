@@ -5,8 +5,8 @@
     <Authors>Mark Embling</Authors>
     <Company>Mark Embling</Company>
     <Description>A collection of common extension methods, helpers and other frequently used code.</Description>
-    <PackageProjectUrl>https://github.com/markembling/MarkEmbling.Utils</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/markembling/MarkEmbling.Utils/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/markembling/MarkEmbling.Utilities</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/markembling/MarkEmbling.Utilities/blob/master/LICENSE</PackageLicenseUrl>
     <Copyright>Copyright © Mark Embling 2013-2017</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>1.0.0-pre1</Version>
