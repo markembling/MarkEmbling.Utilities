@@ -10,7 +10,7 @@
     <PackageIconUrl>https://static.markembling.info/nuget/icons/MarkEmbling.Utilities.png</PackageIconUrl>
     <Copyright>Copyright © Mark Embling 2013-2017</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.0.0-pre1</Version>
+    <Version>1.0.0</Version>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
   </PropertyGroup>
