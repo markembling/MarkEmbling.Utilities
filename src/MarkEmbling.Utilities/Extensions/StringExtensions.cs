@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace MarkEmbling.Utilities.Extensions {
     public static class StringExtensions {
@@ -134,6 +135,16 @@ namespace MarkEmbling.Utilities.Extensions {
         /// <returns>Truncated and suffixed string</returns>
         public static string TruncateOnWhitespace(this string str, int maxLength, string suffix) {
             return TruncateOnCharacters(str, maxLength, new[] { ' ', '\r', '\n', '\t' }, suffix);
+        }
+
+        /// <summary>
+        /// Determine whether the given string contains any of the provided string values
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="values">Items to find</param>
+        /// <returns>Whether or not the string contains any of the values</returns>
+        public static bool ContainsAny(this string str, params string[] values) {
+            return values.Any(val => str.Contains(val));
         }
     }
 }

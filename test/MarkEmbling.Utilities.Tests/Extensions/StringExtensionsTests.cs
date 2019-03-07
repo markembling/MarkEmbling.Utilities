@@ -220,5 +220,23 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
             Assert.Equal(3, result.Length);
             Assert.Equal("One", result);
         }
+
+        [Fact]
+        public void ContainsAny_returns_true_if_a_match_is_found() {
+            const string testString = "eggs beans toast sausage";
+            Assert.True(testString.ContainsAny("fish", "beans"));
+        }
+
+        [Fact]
+        public void ContainsAny_returns_true_if_all_items_match() {
+            const string testString = "eggs beans toast sausage";
+            Assert.True(testString.ContainsAny("toast", "beans"));
+        }
+
+        [Fact]
+        public void ContainsAny_returns_false_if_no_items_match() {
+            const string testString = "eggs beans toast sausage";
+            Assert.False(testString.ContainsAny("bananas", "coconuts"));
+        }
     }
 }
