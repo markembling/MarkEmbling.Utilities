@@ -6,7 +6,7 @@
     <Company>Mark Embling</Company>
     <Description>A collection of common extension methods, helpers and other frequently used code.</Description>
     <PackageProjectUrl>https://github.com/markembling/MarkEmbling.Utilities</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/markembling/MarkEmbling.Utilities/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIconUrl>https://static.markembling.info/nuget/icons/MarkEmbling.Utilities.png</PackageIconUrl>
     <Copyright>Copyright © Mark Embling 2013-2019</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
