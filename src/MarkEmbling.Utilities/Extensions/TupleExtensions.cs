@@ -10,7 +10,7 @@ namespace MarkEmbling.Utilities.Extensions {
         /// </summary>
         /// <param name="range">The range tuple</param>
         /// <returns>String representation of range</returns>
-        public static string RangeToString(this Tuple<int, int> range) {
+        public static string ToRangeString(this Tuple<int, int> range) {
             return range.Item1 == range.Item2
                 ? range.Item1.ToString()
                 : string.Format("{0}-{1}", range.Item1, range.Item2);

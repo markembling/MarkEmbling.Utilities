@@ -158,16 +158,15 @@ namespace MarkEmbling.Utilities.Extensions {
             var matches = Regex.Matches(str, @"(?<f>-?\d+)-(?<s>-?\d+)|(-?\d+)");
             var refs = new List<int>();
 
-            foreach (var m in matches.OfType<Match>()) {
-                if (m.Groups[1].Success) {
-                    int convertedRef;
-                    if (int.TryParse(m.Value, out convertedRef))
+            foreach (var match in matches.OfType<Match>()) {
+                if (match.Groups[1].Success) {
+                    if (int.TryParse(match.Value, out int convertedRef))
                         refs.Add(convertedRef);
                     continue;
                 }
 
-                var start = Convert.ToInt32(m.Groups["f"].Value);
-                var end = Convert.ToInt32(m.Groups["s"].Value) + 1;
+                var start = Convert.ToInt32(match.Groups["f"].Value);
+                var end = Convert.ToInt32(match.Groups["s"].Value) + 1;
                 refs.AddRange(Enumerable.Range(start, end - start));
             }
 
