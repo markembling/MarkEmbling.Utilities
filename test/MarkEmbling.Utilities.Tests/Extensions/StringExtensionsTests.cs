@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MarkEmbling.Utilities.Extensions;
 using Xunit;
 
@@ -237,6 +238,42 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         public void ContainsAny_returns_false_if_no_items_match() {
             const string testString = "eggs beans toast sausage";
             Assert.False(testString.ContainsAny("bananas", "coconuts"));
+        }
+
+        [Fact]
+        public void RangeStringToList_converts_single_range_to_list() {
+            var result = "1-10".RangeStringToList();
+
+            Assert.Equal(10, result.Count());
+            Assert.Equal(1, result.First());
+            Assert.Equal(10, result.Last());
+        }
+
+        [Fact]
+        public void RangeStringToList_converts_comma_separated_numbers_to_list() {
+            var result = "1,2,3".RangeStringToList();
+
+            Assert.Equal(3, result.Count());
+            Assert.Equal(1, result.First());
+            Assert.Equal(3, result.Last());
+        }
+
+        [Fact]
+        public void RangeStringToList_converts_multiple_ranges_to_list() {
+            var result = "1-5,10-15".RangeStringToList();
+
+            Assert.Equal(11, result.Count());
+            Assert.Equal(1, result.First());
+            Assert.Equal(15, result.Last());
+        }
+
+        [Fact]
+        public void RangeStringToList_converts_combination_of_ranges_and_numbers_list() {
+            var result = "1,3,5,10-15".RangeStringToList();
+
+            Assert.Equal(9, result.Count());
+            Assert.Equal(1, result.First());
+            Assert.Equal(15, result.Last());
         }
     }
 }
