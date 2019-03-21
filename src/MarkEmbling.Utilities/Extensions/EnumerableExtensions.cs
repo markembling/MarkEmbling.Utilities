@@ -45,5 +45,31 @@ namespace MarkEmbling.Utilities.Extensions {
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source) {
             return source.Shuffle(new Random());
         }
+
+        /// <summary>
+        /// Converts a list of integers into a list of range tuples
+        /// 
+        /// E.g. 1,3,5,6,7,8,9,10,12 becomes (1,1),(3,3),(5,10),(12,12).
+        /// From https://stackoverflow.com/a/7689095/6844 by Corey Kosak.
+        /// </summary>
+        /// <param name="numList">List of numbers to convert to ranges</param>
+        /// <returns>List of range tuples</returns>
+        public static IEnumerable<Tuple<int, int>> ToRangeTuples(this IEnumerable<int> numList) {
+            List<Tuple<int, int>> rangeTuples = new List<Tuple<int, int>>();
+            Tuple<int, int> currentRange = null;
+            foreach (var num in numList) {
+                if (currentRange == null) {
+                    currentRange = Tuple.Create(num, num);
+                } else if (currentRange.Item2 == num - 1) {
+                    currentRange = Tuple.Create(currentRange.Item1, num);
+                } else {
+                    yield return currentRange;
+                    currentRange = Tuple.Create(num, num);
+                }
+            }
+            if (currentRange != null) {
+                yield return currentRange;
+            }
+        }
     }
 }

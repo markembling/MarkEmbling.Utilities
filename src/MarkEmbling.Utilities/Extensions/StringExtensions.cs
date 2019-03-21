@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MarkEmbling.Utilities.Extensions {
     public static class StringExtensions {
@@ -145,6 +147,31 @@ namespace MarkEmbling.Utilities.Extensions {
         /// <returns>Whether or not the string contains any of the values</returns>
         public static bool ContainsAny(this string str, params string[] values) {
             return values.Any(val => str.Contains(val));
+        }
+
+        /// <summary>
+        /// Convert a string containing ranges to a list of all the integers it defines
+        /// </summary>
+        /// <param name="str">Range string (e.g. "1-4,6,9,10-12")</param>
+        /// <returns>All integers in the range</returns>
+        public static IEnumerable<int> RangeStringToList(this string str) {
+            var matches = Regex.Matches(str, @"(?<f>-?\d+)-(?<s>-?\d+)|(-?\d+)");
+            var refs = new List<int>();
+
+            foreach (var m in matches.OfType<Match>()) {
+                if (m.Groups[1].Success) {
+                    int convertedRef;
+                    if (int.TryParse(m.Value, out convertedRef))
+                        refs.Add(convertedRef);
+                    continue;
+                }
+
+                var start = Convert.ToInt32(m.Groups["f"].Value);
+                var end = Convert.ToInt32(m.Groups["s"].Value) + 1;
+                refs.AddRange(Enumerable.Range(start, end - start));
+            }
+
+            return refs;
         }
     }
 }
