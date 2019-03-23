@@ -6,11 +6,20 @@ using System.Text.RegularExpressions;
 namespace MarkEmbling.Utilities.Extensions {
     public static class RangeExtensions {
         /// <summary>
-        /// Convert a string containing ranges to a list of all the integers it defines
+        /// Convert a string containing ranges to a collection of range tuples
         /// </summary>
         /// <param name="str">Range string (e.g. "1-4,6,9,10-12")</param>
-        /// <returns>All integers in the range</returns>
-        public static IEnumerable<int> RangeStringToList(this string str) {
+        /// <returns>Range tuples defined by the string</returns>
+        public static IEnumerable<Tuple<int, int>> RangeStringToTuples(this string str) {
+            throw new NotImplementedException();
+        }
+
+            /// <summary>
+            /// Convert a string containing ranges to a list of all the integers it defines
+            /// </summary>
+            /// <param name="str">Range string (e.g. "1-4,6,9,10-12")</param>
+            /// <returns>All integers in the range</returns>
+            public static IEnumerable<int> RangeStringToList(this string str) {
             var matches = Regex.Matches(str, @"(?<f>-?\d+)-(?<s>-?\d+)|(-?\d+)");
             var refs = new List<int>();
 
