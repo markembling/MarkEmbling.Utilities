@@ -8,19 +8,17 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
     public class RangeExtensionsTests {
         [Fact]
         public void RangeStringToTuples_converts_single_range_to_single_tuple() {
-            var result = "1-10".RangeStringToTuples();
-            Assert.Equal(1, result.Count());
-            Assert.Equal(1, result.First().Item1);
-            Assert.Equal(10, result.First().Item2);
+            var result = "1-10".RangeStringToTuples().ToArray();
+            Assert.Equal(1, result.Length);
+            Assert.Equal(Tuple.Create(1, 10), result[0]);
         }
 
         [Fact]
         public void RangeStringToTuples_converts_single_number_to_single_tuple() {
-            var result = "1".RangeStringToTuples();
+            var result = "1".RangeStringToTuples().ToArray();
 
-            Assert.Equal(2, result.Count());
-            Assert.Equal(1, result.First().Item1);
-            Assert.Equal(1, result.First().Item2);
+            Assert.Equal(1, result.Length);
+            Assert.Equal(Tuple.Create(1, 1), result[0]);
         }
 
         [Fact]
@@ -41,7 +39,7 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
             Assert.Equal(Tuple.Create(1, 1), result[0]);
             Assert.Equal(Tuple.Create(3, 3), result[1]);
             Assert.Equal(Tuple.Create(5, 5), result[2]);
-            Assert.Equal(Tuple.Create(10, 15), result[2]);
+            Assert.Equal(Tuple.Create(10, 15), result[3]);
         }
 
         [Fact]
