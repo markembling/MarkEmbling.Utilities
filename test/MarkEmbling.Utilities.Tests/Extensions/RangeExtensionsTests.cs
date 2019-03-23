@@ -168,19 +168,33 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         }
 
         [Fact]
-        public void RangeTuplesToInts_converts_single_number_range() {
-            var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 1) };
-            var result = ranges.RangeTuplesToInts().ToArray();
+        public void RangeTupleToInts_converts_single_number_range() {
+            var range = Tuple.Create(1, 1);
+            var result = range.RangeTupleToInts().ToArray();
             Assert.Equal(1, result.Length);
             Assert.Equal(new[] { 1 }, result);
         }
 
         [Fact]
-        public void RangeTuplesToInts_converts_multi_number_range() {
-            var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 10) };
-            var result = ranges.RangeTuplesToInts().ToArray();
+        public void RangeTupleToInts_converts_multi_number_range() {
+            var range = Tuple.Create(1, 10);
+            var result = range.RangeTupleToInts().ToArray();
             Assert.Equal(10, result.Length);
             Assert.Equal(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, result);
+        }
+
+        [Fact]
+        public void RangeTuplesToInts_output_matches_RangeTupleToInts_for_single_range_lists() {
+            var testRangeArrays = new[] {
+                new List<Tuple<int, int>> { Tuple.Create(1, 1) },
+                new List<Tuple<int, int>> { Tuple.Create(1, 5) }
+            };
+
+            foreach (var testArray in testRangeArrays) {
+                var expected = testArray[0].RangeTupleToInts();
+                var actual = testArray.RangeTuplesToInts();
+                Assert.Equal(expected, actual);
+            }
         }
 
         [Fact]
