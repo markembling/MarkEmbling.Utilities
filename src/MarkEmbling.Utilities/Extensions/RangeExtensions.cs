@@ -82,7 +82,7 @@ namespace MarkEmbling.Utilities.Extensions {
         /// <param name="ranges">Range tuples</param>
         /// <returns>String representation of ranges</returns>
         public static string RangeTuplesToString(this IEnumerable<Tuple<int, int>> ranges) {
-            throw new NotImplementedException();
+            return string.Join(",", ranges.Select(x => x.RangeTupleToString()));
         }
 
         /// <summary>
