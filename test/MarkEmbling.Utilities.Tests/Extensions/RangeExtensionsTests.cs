@@ -72,6 +72,56 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
             Assert.Equal("1-100", result);
         }
 
+
+        [Fact]
+        public void RangeTuplesToString_matches_RangeTupleToString_for_single_range_lists() {
+            var testRangeArrays = new[] {
+                new List<Tuple<int, int>> { Tuple.Create(1, 1) },
+                new List<Tuple<int, int>> { Tuple.Create(1, 5) }
+            };
+
+            foreach (var testArray in testRangeArrays) {
+                var expected = testArray[0].RangeTupleToString();
+                var actual = testArray.RangeTuplesToString();
+                Assert.Equal(expected, actual);
+            }
+        }
+
+        [Fact]
+        public void RangeTuplesToString_joins_single_numbers_with_comma() {
+            var ranges = new List<Tuple<int, int>> {
+                Tuple.Create(1, 1),
+                Tuple.Create(2, 2),
+                Tuple.Create(3, 3)
+            };
+            var result = ranges.RangeTuplesToString();
+            Assert.Equal("1,2,3", result);
+        }
+
+        [Fact]
+        public void RangeTuplesToString_joins_ranges_with_commas() {
+            var ranges = new List<Tuple<int, int>> {
+                Tuple.Create(1, 5),
+                Tuple.Create(10, 15),
+                Tuple.Create(20, 25)
+            };
+            var result = ranges.RangeTuplesToString();
+            Assert.Equal("1-5,10-15,20-25", result);
+        }
+
+        [Fact]
+        public void RangeTuplesToString_handles_combination_correctly() {
+            var ranges = new List<Tuple<int, int>> {
+                Tuple.Create(1, 1),
+                Tuple.Create(3, 3),
+                Tuple.Create(5, 5),
+                Tuple.Create(10, 15)
+            };
+            var result = ranges.RangeTuplesToString();
+            Assert.Equal("1,3,5,10-15", result);
+        }
+
+
         [Fact]
         public void ToRangeTuples_converts_contiguous_range_to_single_tuple() {
             var numbers = new List<int> { 1, 2, 3, 4, 5 };
