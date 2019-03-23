@@ -86,13 +86,22 @@ namespace MarkEmbling.Utilities.Extensions {
         }
 
         /// <summary>
-        /// Converts a collection of range tuples into a collection of integers
-        /// 
+        /// Converts a collection of range tuples into a collection of integers contained in the ranges.
         /// </summary>
         /// <param name="tuples">Collection of range tuples</param>
         /// <returns>Collection of integers</returns>
-        public static IEnumerable<int> RangeTuplesToInts(this IEnumerable<Tuple<int, int>> tuples) {
-            throw new NotImplementedException();
+        public static IEnumerable<int> RangeTuplesToInts(this IEnumerable<Tuple<int, int>> ranges) {
+            foreach (var range in ranges) {
+                if (range.Item1 == range.Item2) {
+                    yield return range.Item1;
+                } else {
+                    var size = (range.Item2 - range.Item1) + 1;
+                    var integers = Enumerable.Range(range.Item1, size);
+                    foreach (var integer in integers) {
+                        yield return integer;
+                    }
+                }
+            }
         }
     }
 }
