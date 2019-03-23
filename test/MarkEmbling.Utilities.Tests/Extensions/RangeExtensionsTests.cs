@@ -59,52 +59,16 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
 
 
         [Fact]
-        public void RangeStringToList_converts_single_range_to_list() {
-            var result = "1-10".RangeStringToList();
-
-            Assert.Equal(10, result.Count());
-            Assert.Equal(1, result.First());
-            Assert.Equal(10, result.Last());
-        }
-
-        [Fact]
-        public void RangeStringToList_converts_comma_separated_numbers_to_list() {
-            var result = "1,2,3".RangeStringToList();
-
-            Assert.Equal(3, result.Count());
-            Assert.Equal(1, result.First());
-            Assert.Equal(3, result.Last());
-        }
-
-        [Fact]
-        public void RangeStringToList_converts_multiple_ranges_to_list() {
-            var result = "1-5,10-15".RangeStringToList();
-
-            Assert.Equal(11, result.Count());
-            Assert.Equal(1, result.First());
-            Assert.Equal(15, result.Last());
-        }
-
-        [Fact]
-        public void RangeStringToList_converts_combination_of_ranges_and_numbers_list() {
-            var result = "1,3,5,10-15".RangeStringToList();
-
-            Assert.Equal(9, result.Count());
-            Assert.Equal(1, result.First());
-            Assert.Equal(15, result.Last());
-        }
-
-        [Fact]
-        public void ToRangeString_converts_single_number_range_to_single_number_string() {
+        public void RangeTupleToString_converts_single_number_range_to_single_number_string() {
             var range = Tuple.Create(1, 1);
-            var result = range.ToRangeString();
+            var result = range.RangeTupleToString();
             Assert.Equal("1", result);
         }
 
         [Fact]
-        public void ToRangeString_converts_larger_spanning_range_to_range_string() {
+        public void RangeTupleToString_converts_larger_spanning_range_to_range_string() {
             var range = Tuple.Create(1, 100);
-            var result = range.ToRangeString();
+            var result = range.RangeTupleToString();
             Assert.Equal("1-100", result);
         }
 
