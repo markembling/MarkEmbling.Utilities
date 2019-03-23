@@ -11,15 +11,26 @@ namespace MarkEmbling.Utilities.Extensions {
         /// <param name="str">Range string (e.g. "1-4,6,9,10-12")</param>
         /// <returns>Range tuples defined by the string</returns>
         public static IEnumerable<Tuple<int, int>> RangeStringToTuples(this string str) {
-            throw new NotImplementedException();
+            var matches = Regex.Matches(str, @"(?<f>-?\d+)-(?<s>-?\d+)|(-?\d+)");
+            foreach (var match in matches.OfType<Match>()) {
+                if (match.Groups[1].Success) {
+                    if (int.TryParse(match.Value, out int convertedRef))
+                        yield return Tuple.Create(convertedRef, convertedRef);
+                    continue;
+                }
+
+                var start = Convert.ToInt32(match.Groups["f"].Value);
+                var end = Convert.ToInt32(match.Groups["s"].Value);
+                yield return Tuple.Create(start, end);
+            }
         }
 
-            /// <summary>
-            /// Convert a string containing ranges to a list of all the integers it defines
-            /// </summary>
-            /// <param name="str">Range string (e.g. "1-4,6,9,10-12")</param>
-            /// <returns>All integers in the range</returns>
-            public static IEnumerable<int> RangeStringToList(this string str) {
+        /// <summary>
+        /// Convert a string containing ranges to a list of all the integers it defines
+        /// </summary>
+        /// <param name="str">Range string (e.g. "1-4,6,9,10-12")</param>
+        /// <returns>All integers in the range</returns>
+        public static IEnumerable<int> RangeStringToList(this string str) {
             var matches = Regex.Matches(str, @"(?<f>-?\d+)-(?<s>-?\d+)|(-?\d+)");
             var refs = new List<int>();
 
