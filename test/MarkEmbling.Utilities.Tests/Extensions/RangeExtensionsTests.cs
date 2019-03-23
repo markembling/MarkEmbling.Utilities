@@ -52,6 +52,52 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
             Assert.Equal(Tuple.Create(3, 3), result[2]);
         }
 
+        [Fact]
+        public void RangeStringToTuples_creates_intersecting_ranges_when_string_defines_intersections() {
+            var result = "1-10,5,5-15".RangeStringToTuples().ToArray();
+
+            Assert.Equal(3, result.Length);
+            Assert.Equal(Tuple.Create(1, 10), result[0]);
+            Assert.Equal(Tuple.Create(5, 5), result[1]);
+            Assert.Equal(Tuple.Create(5, 15), result[2]);
+        }
+
+        [Fact]
+        public void ToRangeTuples_converts_contiguous_range_to_single_tuple() {
+            var numbers = new List<int> { 1, 2, 3, 4, 5 };
+            var result = numbers.ToRangeTuples();
+
+            Assert.Equal(1, result.Count());
+            Assert.Equal(Tuple.Create(1, 5), result.First());
+        }
+
+        [Fact]
+        public void ToRangeTuples_converts_single_number_to_single_tuple() {
+            var numbers = new List<int> { 1 };
+            var result = numbers.ToRangeTuples();
+
+            Assert.Equal(1, result.Count());
+            Assert.Equal(Tuple.Create(1, 1), result.First());
+        }
+
+        [Fact]
+        public void ToRangeTuples_converts_non_contiguous_sequence_to_multiple_single_tuples() {
+            var numbers = new List<int> { 1, 3, 5 };
+            var result = numbers.ToRangeTuples();
+
+            Assert.Equal(3, result.Count());
+            Assert.Equal(Tuple.Create(1, 1), result.ElementAt(0));
+            Assert.Equal(Tuple.Create(3, 3), result.ElementAt(1));
+            Assert.Equal(Tuple.Create(5, 5), result.ElementAt(2));
+        }
+
+        [Fact]
+        public void ToRangeTuples_converts_empty_list_to_empty_tuple_list() {
+            var numbers = new List<int>();
+            var result = numbers.ToRangeTuples();
+            Assert.False(result.Any());
+        }
+
 
 
 
@@ -121,41 +167,48 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
             Assert.Equal("1,3,5,10-15", result);
         }
 
-
         [Fact]
-        public void ToRangeTuples_converts_contiguous_range_to_single_tuple() {
-            var numbers = new List<int> { 1, 2, 3, 4, 5 };
-            var result = numbers.ToRangeTuples();
-
-            Assert.Equal(1, result.Count());
-            Assert.Equal(Tuple.Create(1, 5), result.First());
+        public void RangeTuplesToInts_converts_single_number_range() {
+            var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 1) };
+            var result = ranges.RangeTuplesToInts().ToArray();
+            Assert.Equal(1, result.Length);
+            Assert.Equal(new[] { 1 }, result);
         }
 
         [Fact]
-        public void ToRangeTuples_converts_single_number_to_single_tuple() {
-            var numbers = new List<int> { 1 };
-            var result = numbers.ToRangeTuples();
-
-            Assert.Equal(1, result.Count());
-            Assert.Equal(Tuple.Create(1, 1), result.First());
+        public void RangeTuplesToInts_converts_multi_number_range() {
+            var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 10) };
+            var result = ranges.RangeTuplesToInts().ToArray();
+            Assert.Equal(10, result.Length);
+            Assert.Equal(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, result);
         }
 
         [Fact]
-        public void ToRangeTuples_converts_non_contiguous_sequence_to_multiple_single_tuples() {
-            var numbers = new List<int> { 1, 3, 5 };
-            var result = numbers.ToRangeTuples();
-
-            Assert.Equal(3, result.Count());
-            Assert.Equal(Tuple.Create(1, 1), result.ElementAt(0));
-            Assert.Equal(Tuple.Create(3, 3), result.ElementAt(1));
-            Assert.Equal(Tuple.Create(5, 5), result.ElementAt(2));
+        public void RangeTuplesToInts_handles_multiple_ranges_correctly() {
+            var ranges = new List<Tuple<int, int>> {
+                Tuple.Create(1, 1),
+                Tuple.Create(3, 3),
+                Tuple.Create(5, 5),
+                Tuple.Create(10, 15)
+            };
+            var result = ranges.RangeTuplesToInts().ToArray();
+            Assert.Equal(9, result.Length);
+            Assert.Equal(new[] { 1, 3, 5, 10, 11, 12, 13, 14, 15 }, result);
         }
 
         [Fact]
-        public void ToRangeTuples_converts_empty_list_to_empty_tuple_list() {
-            var numbers = new List<int>();
-            var result = numbers.ToRangeTuples();
-            Assert.False(result.Any());
+        public void RangeTuplesToInts_duplicates_numbers_when_the_ranges_intersect() {
+            var ranges = new List<Tuple<int, int>> {
+                Tuple.Create(1, 10),
+                Tuple.Create(5, 15)
+            };
+            var result = ranges.RangeTuplesToInts().ToArray();
+            Assert.Equal(21, result.Length);
+            Assert.Equal(
+                new[] {
+                    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+                    5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 }, 
+                result);
         }
     }
 }
