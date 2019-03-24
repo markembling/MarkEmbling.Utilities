@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MarkEmbling.Utilities.Extensions;
 using Xunit;
 

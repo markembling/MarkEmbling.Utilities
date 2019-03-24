@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MarkEmbling.Utilities.Extensions {
     public static class StringExtensions {
