@@ -53,13 +53,17 @@ namespace MarkEmbling.Utilities.Extensions {
 
         /// <summary>
         /// Normalise a collection of range tuples to ensure the most succinct representation is used.
+        /// Duplicates will also be removed.
         /// 
         /// E.g. [(1,1),(2,2),(3,3),(10,15)] will be converted to [(1,3),(10,15)].
         /// </summary>
         /// <param name="ranges">Range tuples</param>
         /// <returns>Normalised range tuples</returns>
         public static IEnumerable<Tuple<int, int>> NormaliseRanges(this IEnumerable<Tuple<int, int>> ranges) {
-            throw new NotImplementedException();
+            return ranges.RangeTuplesToInts()
+                         .OrderBy(x => x)
+                         .Distinct()
+                         .ToRangeTuples();
         }
 
         /// <summary>
