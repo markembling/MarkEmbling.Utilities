@@ -98,11 +98,68 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
             Assert.False(result.Any());
         }
 
+        [Fact]
+        public void NormaliseRanges_turns_two_sequential_numbers_into_single_range() {
+            var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 1), Tuple.Create(2, 2) };
+            var result = ranges.NormaliseRanges().ToArray();
+            Assert.Equal(1, result.Length);
+            Assert.Equal(Tuple.Create(1, 2), result[0]);
+        }
 
+        [Fact]
+        public void NormaliseRanges_turns_two_contiguous_ranges_into_single_range() {
+            var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 5), Tuple.Create(6, 10) };
+            var result = ranges.NormaliseRanges().ToArray();
+            Assert.Equal(1, result.Length);
+            Assert.Equal(Tuple.Create(1, 10), result[0]);
+        }
 
+        [Fact]
+        public void NormaliseRanges_removes_duplicates_from_intersecting_ranges() {
+            var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 10), Tuple.Create(5, 15) };
+            var result = ranges.NormaliseRanges().ToArray();
+            Assert.Equal(1, result.Length);
+            Assert.Equal(Tuple.Create(1, 15), result[0]);
+        }
 
+        [Fact]
+        public void NormaliseRanges_removes_duplicates_from_multiple_single_number_ranges() {
+            var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 1), Tuple.Create(1, 1) };
+            var result = ranges.NormaliseRanges().ToArray();
+            Assert.Equal(1, result.Length);
+            Assert.Equal(Tuple.Create(1, 1), result[0]);
+        }
 
+        [Fact]
+        public void NormaliseRanges_changes_nothing_with_non_intersecting_non_contiguous_ranges() {
+            var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 5), Tuple.Create(10, 15) };
+            var result = ranges.NormaliseRanges().ToArray();
+            Assert.Equal(2, result.Length);
+            Assert.Equal(Tuple.Create(1, 5), result[0]);
+            Assert.Equal(Tuple.Create(10, 15), result[1]);
+        }
 
+        [Fact]
+        public void NormaliseRanges_removes_duplicates_from_multi_number_range_and_intersecting_single_number_range() {
+            var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 10), Tuple.Create(5, 5) };
+            var result = ranges.NormaliseRanges().ToArray();
+            Assert.Equal(1, result.Length);
+            Assert.Equal(Tuple.Create(1, 10), result[0]);
+        }
+
+        [Fact]
+        public void NormaliseRanges_orders_results_in_ascending_order() {
+            var ranges = new List<Tuple<int, int>> {
+                Tuple.Create(10, 15),
+                Tuple.Create(8, 8),
+                Tuple.Create(1, 5)
+            };
+            var result = ranges.NormaliseRanges().ToArray();
+            Assert.Equal(3, result.Length);
+            Assert.Equal(Tuple.Create(1, 5), result[0]);
+            Assert.Equal(Tuple.Create(8, 8), result[1]);
+            Assert.Equal(Tuple.Create(10, 15), result[2]);
+        }
 
         [Fact]
         public void RangeTupleToString_converts_single_number_range_to_single_number_string() {
@@ -117,7 +174,6 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
             var result = range.RangeTupleToString();
             Assert.Equal("1-100", result);
         }
-
 
         [Fact]
         public void RangeTuplesToString_matches_RangeTupleToString_for_single_range_lists() {
