@@ -22,7 +22,7 @@ function build {
 
 # Execute the tests
 function test {
-    dotnet test "test/MarkEmbling.Utilities.Tests/MarkEmbling.Utilities.Tests.csproj" --configuration "Release"
+    dotnet test "tests/MarkEmbling.Utilities.Tests/MarkEmbling.Utilities.Tests.csproj" --configuration "Release"
 }
 
 # Publish packages to the NuGet gallery
