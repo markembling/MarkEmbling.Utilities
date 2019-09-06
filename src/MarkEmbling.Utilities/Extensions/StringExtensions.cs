@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
+using System.Security.Cryptography;
+using System.Text;
 
-namespace MarkEmbling.Utilities.Extensions {
+namespace MarkEmbling.Utilities.Extensions
+{
     public static class StringExtensions {
         /// <summary>
         /// Determine if this string is equal to another, ignoring casing
@@ -147,6 +148,34 @@ namespace MarkEmbling.Utilities.Extensions {
         /// <returns>Whether or not the string contains any of the values</returns>
         public static bool ContainsAny(this string str, params string[] values) {
             return values.Any(val => str.Contains(val));
+        }
+
+        /// <summary>
+        /// Return a hexidecimal representation of a hashed version of the given string
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="algorithm">Cryptographic hashing algorithm</param>
+        /// <param name="encoding">Text encoding</param>
+        /// <returns>Hexidecimal hashed string</returns>
+        public static string Hash(this string str, HashAlgorithm algorithm, Encoding encoding) {
+            var builder = new StringBuilder();
+            var strBytes = encoding.GetBytes(str);
+            var hashedBytes = algorithm.ComputeHash(strBytes);
+            for (var i = 0; i < hashedBytes.Length; i++)
+            {
+                builder.Append(hashedBytes[i].ToString("x2"));
+            }
+            return builder.ToString();
+        }
+
+        /// <summary>
+        /// Return a hexidecimal representation of a hashed version of the given string
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="algorithm">Cryptographic hashing algorithm</param>
+        /// <returns>Hexidecimal hashed string</returns>
+        public static string Hash(this string str, HashAlgorithm algorithm) {
+            return Hash(str, algorithm, Encoding.UTF8);
         }
     }
 }
