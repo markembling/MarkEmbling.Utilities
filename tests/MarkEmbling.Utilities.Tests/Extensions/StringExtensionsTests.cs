@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using MarkEmbling.Utilities.Extensions;
 using Xunit;
 
@@ -238,6 +240,49 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         public void ContainsAny_returns_false_if_no_items_match() {
             const string testString = "eggs beans toast sausage";
             Assert.False(testString.ContainsAny("bananas", "coconuts"));
+        }
+
+        [Fact]
+        public void Hash_returns_expected_SHA256_hash_representation_for_UTF8_string() {
+            const string testString = "foo";
+            const string expected = "2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae";
+            var result = testString.Hash(SHA256.Create(), Encoding.UTF8);
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void Hash_returns_expected_SHA256_hash_representation_for_UTF16_string() {
+            const string testString = "foo";
+            const string expected = "0e6e800716cd8903128fc39b02c3e3679b3e3d590d82342eb16866b3f459972c";
+            var result = testString.Hash(SHA256.Create());
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void Hash_returns_expected_MD5_hash_representation_for_UTF8_string()
+        {
+            const string testString = "foo";
+            const string expected = "acbd18db4cc2f85cedef654fccc4a4d8";
+            var result = testString.Hash(MD5.Create(), Encoding.UTF8);
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void Hash_returns_expected_SHA512_hash_representation_for_UTF8_string()
+        {
+            const string testString = "foo";
+            const string expected = "f7fbba6e0636f890e56fbbf3283e524c6fa3204ae298382d624741d0dc6638326e282c41be5e4254d8820772c5518a2c5a8c0c7f7eda19594a7eb539453e1ed7";
+            var result = testString.Hash(SHA512.Create(), Encoding.UTF8);
+            Assert.Equal(expected, result);
+        }
+
+        [Fact]
+        public void Hash_uses_UTF8_encoding_if_not_specified() {
+            const string testString = "foo";
+            var sha256 = SHA256.Create();
+            var expected = testString.Hash(sha256, Encoding.UTF8);
+            var result = testString.Hash(sha256);
+            Assert.Equal(expected, result);
         }
     }
 }
