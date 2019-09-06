@@ -251,10 +251,10 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         }
 
         [Fact]
-        public void Hash_returns_expected_SHA256_hash_representation_for_UTF16_string() {
+        public void Hash_returns_expected_SHA256_hash_representation_for_UTF16BE_string() {
             const string testString = "foo";
             const string expected = "0e6e800716cd8903128fc39b02c3e3679b3e3d590d82342eb16866b3f459972c";
-            var result = testString.Hash(SHA256.Create());
+            var result = testString.Hash(SHA256.Create(), Encoding.BigEndianUnicode);
             Assert.Equal(expected, result);
         }
 
