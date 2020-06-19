@@ -7,12 +7,20 @@
     <Description>A collection of common extension methods, helpers and other frequently used code.</Description>
     <PackageProjectUrl>https://github.com/markembling/MarkEmbling.Utilities</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIconUrl>https://static.markembling.info/nuget/icons/MarkEmbling.Utilities.png</PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <Copyright>Copyright © Mark Embling 2013-2020</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>2.1.0</Version>
     <AssemblyVersion>2.1.0</AssemblyVersion>
     <FileVersion>2.1.0</FileVersion>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
