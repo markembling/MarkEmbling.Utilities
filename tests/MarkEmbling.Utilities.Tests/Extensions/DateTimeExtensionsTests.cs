@@ -38,5 +38,12 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         public void GetUnixTimeMilliseconds_returns_correct_value_for_after_epoch_date() {
             Assert.Equal(86400000, new DateTime(1970, 1, 2).GetUnixTimeMilliseconds());
         }
+
+        [Fact]
+        public void GetRfc3339String_returns_correct_value_for_utc_date() {
+            Assert.Equal(
+                "2020-01-01T12:00:00.000+00:00",
+                new DateTime(2020, 1, 1, 12, 0, 0, DateTimeKind.Utc).GetRfc3339String());
+        }
     }
 }

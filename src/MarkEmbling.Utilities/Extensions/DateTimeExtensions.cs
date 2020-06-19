@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace MarkEmbling.Utilities.Extensions {
     public static class DateTimeExtensions {
@@ -30,6 +31,15 @@ namespace MarkEmbling.Utilities.Extensions {
         /// <returns>Milliseconds since Unix epoch</returns>
         public static long GetUnixTimeMilliseconds(this DateTime dt) {
             return Convert.ToInt64((dt.ToUniversalTime() - UNIX_EPOCH).TotalMilliseconds);
+        }
+
+        /// <summary>
+        /// Get an RFC 3339 string representation of a DateTime instance
+        /// </summary>
+        /// <param name="dt">Current DateTime instance</param>
+        /// <returns>RFC 3339 string representation</returns>
+        public static string GetRfc3339String(this DateTime dt) {
+            return dt.ToString("yyyy-MM-dd'T'HH:mm:ss.fffzzz", DateTimeFormatInfo.InvariantInfo);
         }
     }
 }
