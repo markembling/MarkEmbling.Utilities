@@ -8,11 +8,11 @@
     <PackageProjectUrl>https://github.com/markembling/MarkEmbling.Utilities</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIconUrl></PackageIconUrl>
-    <Copyright>Copyright © Mark Embling 2013-2020</Copyright>
+    <Copyright>Copyright © Mark Embling 2013-2021</Copyright>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>2.1.0</Version>
-    <AssemblyVersion>2.1.0</AssemblyVersion>
-    <FileVersion>2.1.0</FileVersion>
+    <Version>2.2.0</Version>
+    <AssemblyVersion>2.2.0</AssemblyVersion>
+    <FileVersion>2.2.0</FileVersion>
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
