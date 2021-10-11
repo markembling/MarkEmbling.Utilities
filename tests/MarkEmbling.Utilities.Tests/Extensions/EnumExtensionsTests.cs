@@ -6,10 +6,57 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
     public class EnumExtensionsTests {
         private enum TestEnum {
             [System.ComponentModel.Description("Item one")]
+            [System.ComponentModel.DataAnnotations.Display(Name = "Artikel eins", Description = "First item in the enum")]
             One,
-            Two
+
+            Two,
+
+            [System.ComponentModel.DataAnnotations.Display()]
+            Three
         }
-        
+
+        [Fact]
+        public void GetDisplayName_returns_display_attribute_name_value()
+        {
+            var result = TestEnum.One.GetDisplayName();
+            Assert.Equal("Artikel eins", result);
+        }
+
+        [Fact]
+        public void GetDisplayDescription_returns_null_if_display_attribute_name_value_is_not_set()
+        {
+            var result = TestEnum.Three.GetDisplayName();
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public void GetDisplayName_returns_literal_string_value_when_no_display_attribute()
+        {
+            var result = TestEnum.Two.GetDisplayName();
+            Assert.Equal("Two", result);
+        }
+
+        [Fact]
+        public void GetDisplayDescription_returns_display_attribute_description_value()
+        {
+            var result = TestEnum.One.GetDisplayDescription();
+            Assert.Equal("First item in the enum", result);
+        }
+
+        [Fact]
+        public void GetDisplayDescription_returns_null_if_display_attribute_description_value_is_not_set()
+        {
+            var result = TestEnum.Three.GetDisplayDescription();
+            Assert.Null( result);
+        }
+
+        [Fact]
+        public void GetDisplayDescription_returns_literal_string_value_when_no_display_attribute()
+        {
+            var result = TestEnum.Two.GetDisplayDescription();
+            Assert.Equal("Two", result);
+        }
+
         [Fact]
         public void GetDescription_returns_description_attribute_value() {
             var result = TestEnum.One.GetDescription();
