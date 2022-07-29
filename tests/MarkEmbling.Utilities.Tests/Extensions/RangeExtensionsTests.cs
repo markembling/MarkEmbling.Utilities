@@ -9,7 +9,7 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         [Fact]
         public void RangeStringToTuples_converts_single_range_to_single_tuple() {
             var result = "1-10".RangeStringToTuples().ToArray();
-            Assert.Equal(1, result.Length);
+            Assert.Single(result);
             Assert.Equal(Tuple.Create(1, 10), result[0]);
         }
 
@@ -17,7 +17,7 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         public void RangeStringToTuples_converts_single_number_to_single_tuple() {
             var result = "1".RangeStringToTuples().ToArray();
 
-            Assert.Equal(1, result.Length);
+            Assert.Single(result);
             Assert.Equal(Tuple.Create(1, 1), result[0]);
         }
 
@@ -67,7 +67,7 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
             var numbers = new List<int> { 1, 2, 3, 4, 5 };
             var result = numbers.ToRangeTuples();
 
-            Assert.Equal(1, result.Count());
+            Assert.Single(result);
             Assert.Equal(Tuple.Create(1, 5), result.First());
         }
 
@@ -76,7 +76,7 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
             var numbers = new List<int> { 1 };
             var result = numbers.ToRangeTuples();
 
-            Assert.Equal(1, result.Count());
+            Assert.Single(result);
             Assert.Equal(Tuple.Create(1, 1), result.First());
         }
 
@@ -102,7 +102,7 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         public void NormaliseRanges_turns_two_sequential_numbers_into_single_range() {
             var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 1), Tuple.Create(2, 2) };
             var result = ranges.NormaliseRanges().ToArray();
-            Assert.Equal(1, result.Length);
+            Assert.Single(result);
             Assert.Equal(Tuple.Create(1, 2), result[0]);
         }
 
@@ -110,7 +110,7 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         public void NormaliseRanges_turns_two_contiguous_ranges_into_single_range() {
             var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 5), Tuple.Create(6, 10) };
             var result = ranges.NormaliseRanges().ToArray();
-            Assert.Equal(1, result.Length);
+            Assert.Single(result);
             Assert.Equal(Tuple.Create(1, 10), result[0]);
         }
 
@@ -118,7 +118,7 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         public void NormaliseRanges_removes_duplicates_from_intersecting_ranges() {
             var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 10), Tuple.Create(5, 15) };
             var result = ranges.NormaliseRanges().ToArray();
-            Assert.Equal(1, result.Length);
+            Assert.Single(result);
             Assert.Equal(Tuple.Create(1, 15), result[0]);
         }
 
@@ -126,7 +126,7 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         public void NormaliseRanges_removes_duplicates_from_multiple_single_number_ranges() {
             var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 1), Tuple.Create(1, 1) };
             var result = ranges.NormaliseRanges().ToArray();
-            Assert.Equal(1, result.Length);
+            Assert.Single(result);
             Assert.Equal(Tuple.Create(1, 1), result[0]);
         }
 
@@ -143,7 +143,7 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         public void NormaliseRanges_removes_duplicates_from_multi_number_range_and_intersecting_single_number_range() {
             var ranges = new List<Tuple<int, int>> { Tuple.Create(1, 10), Tuple.Create(5, 5) };
             var result = ranges.NormaliseRanges().ToArray();
-            Assert.Equal(1, result.Length);
+            Assert.Single(result);
             Assert.Equal(Tuple.Create(1, 10), result[0]);
         }
 
@@ -227,7 +227,7 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         public void RangeTupleToInts_converts_single_number_range() {
             var range = Tuple.Create(1, 1);
             var result = range.RangeTupleToInts().ToArray();
-            Assert.Equal(1, result.Length);
+            Assert.Single(result);
             Assert.Equal(new[] { 1 }, result);
         }
 

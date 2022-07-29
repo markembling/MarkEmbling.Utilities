@@ -12,9 +12,9 @@ namespace MarkEmbling.Utilities.Tests {
         [Fact]
         public void GetValuesList_returns_list_of_enum_values() {
             var result = EnumHelper.GetValuesList<TestEnum>();
-            Assert.Equal(result.Count(), 2);
-            Assert.Equal(result.ElementAt(0), TestEnum.One);
-            Assert.Equal(result.ElementAt(1), TestEnum.Two);
+            Assert.Equal(2, result.Count());
+            Assert.Equal(TestEnum.One, result.ElementAt(0));
+            Assert.Equal(TestEnum.Two, result.ElementAt(1));
         }
 
         [Fact]
