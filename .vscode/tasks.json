@@ -1,24 +1,36 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
-    "version": "0.1.0",
+    "version": "2.0.0",
     "command": "dotnet",
-    "isShellCommand": true,
     "args": [],
     "tasks": [
         {
-            "taskName": "build",
-            "args": [ ],
-            "isBuildCommand": true,
-            "showOutput": "silent",
-            "problemMatcher": "$msCompile"
+            "label": "build",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "build"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "_id": "build",
+                "isDefault": false
+            }
         },
         {
-            "taskName": "test",
-            "args": [ "test/MarkEmbling.Utilities.Tests/MarkEmbling.Utilities.Tests.csproj" ],
-            "isTestCommand": true,
-            "showOutput": "always",
-            "problemMatcher": "$msCompile"
+            "label": "test",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "test",
+                "test/MarkEmbling.Utilities.Tests/MarkEmbling.Utilities.Tests.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "_id": "test",
+                "isDefault": false
+            }
         }
     ]
 }
