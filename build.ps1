@@ -28,6 +28,7 @@ function test {
 # Publish packages to the NuGet gallery
 function publish {
     $packages = Get-ChildItem src -Recurse -Filter *.nupkg
+    $apiKey = Read-Host -Prompt "NuGet API Key" -MaskInput
     foreach ($package in $packages) {
         $choices = @(
             [Management.Automation.Host.ChoiceDescription]::new("&Publish", "Publish this package to the NuGet gallery"),
@@ -35,7 +36,7 @@ function publish {
         )
         $answer = $Host.UI.PromptForChoice("Publish Package", "Publish $package to the NuGet gallery?", $choices, 1)
         if ($answer -eq 0) {
-            dotnet nuget push $package.FullName --source https://www.nuget.org
+            dotnet nuget push $package.FullName --source https://api.nuget.org/v3/index.json --api-key=$apiKey
         }
     }
 }
