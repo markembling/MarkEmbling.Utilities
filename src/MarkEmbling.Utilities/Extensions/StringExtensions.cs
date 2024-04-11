@@ -141,6 +141,17 @@ namespace MarkEmbling.Utilities.Extensions
         }
 
         /// <summary>
+        /// Determine if this string contains another, ignoring casing
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="value">The string to seek</param>
+        /// <returns>Whether or not the substring is contained within the string, not accounting for case</returns>
+        public static bool ContainsWithoutCase(this string str, string value)
+        {
+            return str?.IndexOf(value, StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+
+        /// <summary>
         /// Determine whether the given string contains any of the provided string values
         /// </summary>
         /// <param name="str">Current string instance</param>
@@ -148,6 +159,16 @@ namespace MarkEmbling.Utilities.Extensions
         /// <returns>Whether or not the string contains any of the values</returns>
         public static bool ContainsAny(this string str, params string[] values) {
             return values.Any(val => str.Contains(val));
+        }
+
+        /// <summary>
+        /// Determine whether the given string contains any of the provided string values, ignoring case
+        /// </summary>
+        /// <param name="str">Current string instance</param>
+        /// <param name="values">String values to seek</param>
+        /// <returns>Whether or not any of the substrings are contained in the string, not accounting for case</returns>
+        public static bool ContainsAnyWithoutCase(this string str, params string[] values) {
+            return values.Any(val => str.ContainsWithoutCase(val));
         }
 
         /// <summary>

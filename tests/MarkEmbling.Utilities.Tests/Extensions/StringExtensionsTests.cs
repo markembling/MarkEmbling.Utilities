@@ -225,6 +225,27 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         }
 
         [Fact]
+        public void ContainsWithoutCase_returns_true_if_a_same_case_match_is_present()
+        {
+            const string testString = "eggs beans toast sausage";
+            Assert.True(testString.ContainsWithoutCase("beans"));
+        }
+
+        [Fact]
+        public void ContainsWithoutCase_returns_true_if_a_different_case_match_is_present()
+        {
+            const string testString = "eggs beans toast sausage";
+            Assert.True(testString.ContainsWithoutCase("BEANS"));
+        }
+
+        [Fact]
+        public void ContainsWithoutCase_returns_false_if_no_match_is_present()
+        {
+            const string testString = "eggs beans toast sausage";
+            Assert.False(testString.ContainsWithoutCase("mushroom"));
+        }
+
+        [Fact]
         public void ContainsAny_returns_true_if_a_match_is_found() {
             const string testString = "eggs beans toast sausage";
             Assert.True(testString.ContainsAny("fish", "beans"));
@@ -239,7 +260,42 @@ namespace MarkEmbling.Utilities.Tests.Extensions {
         [Fact]
         public void ContainsAny_returns_false_if_no_items_match() {
             const string testString = "eggs beans toast sausage";
-            Assert.False(testString.ContainsAny("bananas", "coconuts"));
+            Assert.False(testString.ContainsAny("banana", "coconut"));
+        }
+
+        [Fact]
+        public void ContainsAnyWithoutCase_returns_true_if_an_exact_match_is_present()
+        {
+            const string testString = "eggs beans toast sausage";
+            Assert.True(testString.ContainsAny("fish", "beans"));
+        }
+
+        [Fact]
+        public void ContainsAnyWithoutCase_returns_true_if_a_match_is_present_case_insensitive()
+        {
+            const string testString = "eggs beans toast sausage";
+            Assert.True(testString.ContainsAnyWithoutCase("FISH", "BEANS"));
+        }
+
+        [Fact]
+        public void ContainsAnyWithoutCase_returns_true_if_all_items_exactly_match()
+        {
+            const string testString = "eggs beans toast sausage";
+            Assert.True(testString.ContainsAnyWithoutCase("toast", "beans"));
+        }
+
+        [Fact]
+        public void ContainsAnyWithoutCase_returns_true_if_all_items_match_case_insensitive()
+        {
+            const string testString = "eggs beans toast sausage";
+            Assert.True(testString.ContainsAnyWithoutCase("TOAST", "BEANS"));
+        }
+
+        [Fact]
+        public void ContainsAnyWithoutCase_returns_false_if_no_items_match()
+        {
+            const string testString = "eggs beans toast sausage";
+            Assert.False(testString.ContainsAnyWithoutCase("banana", "coconut"));
         }
 
         [Fact]
