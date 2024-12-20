@@ -45,5 +45,27 @@ namespace MarkEmbling.Utilities.Extensions {
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source) {
             return source.Shuffle(new Random());
         }
+
+        /// <summary>
+        /// Determines whether a sequence contains no elements
+        /// </summary>
+        /// <typeparam name="T">The type of the collection elements</typeparam>
+        /// <param name="source">The collection to check</param>
+        /// <returns>Whether or not the collection contains no elements</returns>
+        public static bool None<T>(this IEnumerable<T> source)
+        {
+            return !source.Any();
+        }
+
+        /// <summary>
+        /// Determines whether a sequence contains no elements or is null
+        /// </summary>
+        /// <typeparam name="T">The type of the collection elements</typeparam>
+        /// <param name="source">The collection to check</param>
+        /// <returns>Whether or not the collection contains no elements or is null</returns>
+        public static bool NoneOrNull<T>(this IEnumerable<T> source)
+        {
+            return source == null || None(source);
+        }
     }
 }
